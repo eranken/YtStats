@@ -15,10 +15,10 @@ parser.add_argument('--opt',action='store', type=str, default = "")
 
 args = parser.parse_args()
 
-os.system('cmsenv')
+#os.system('cmsenv')
 
 os.system('combineTool.py -M Impacts -d card.root -m 125 --redefineSignalPOIs '+args.poi+' --freezeParameters '+args.freeze+' --setParameters '+args.set+' --doInitialFit --robustFit 1 -t '+args.t)
 os.system('combineTool.py -M Impacts -d card.root -m 125 --redefineSignalPOIs '+args.poi+' --freezeParameters '+args.freeze+' --setParameters '+args.set+' --doFits --robustFit 1 -t '+args.t)
 os.system('combineTool.py -M Impacts -d card.root -m 125 --redefineSignalPOIs '+args.poi+' --freezeParameters '+args.freeze+' --setParameters '+args.set+' -o'+args.o+'.json')
 os.system('plotImpacts.py -i '+args.o+'.json -o '+args.o)
-os.system('gitup '+args.o+'.pdf')
+#os.system('gitup '+args.o+'.pdf')
