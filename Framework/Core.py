@@ -95,7 +95,7 @@ class SystWriter(object):
 		outputStr = ""
 		outputStr += "gt\tparam\t1.\t1.\t[0,10]\n"
 		#outputStr += "gt\tflatParam\t\n"
-		outputStr += binName+"Rate\trateParam\tSignal\tttsig\t{0}*(@0)^2{1}*(@0){2}+1\tgt\n".format(
+		outputStr += binName+"Rate\trateParam\tSignal\tttsig\t{0}*(@0)^2{1}*(@0){2}\tgt\n".format(
 				quadCoeff[0],
 				"+"+str(quadCoeff[1]) if quadCoeff[1] > 0. else "-"+str(abs(quadCoeff[1])),
 				"+"+str(quadCoeff[2]) if quadCoeff[2] > 0. else "-"+str(abs(quadCoeff[2])),
