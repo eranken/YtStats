@@ -1,0 +1,25 @@
+Combination of bin1.txt  bin2.txt  bin3.txt
+imax 3 number of bins
+jmax 3 number of processes minus 1
+kmax 5 number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes *    ch1  bin1.root Signal/$PROCESS Signal/$PROCESS_$SYSTEMATIC
+shapes *    ch2  bin2.root Signal/$PROCESS Signal/$PROCESS_$SYSTEMATIC
+shapes *    ch3  bin3.root Signal/$PROCESS Signal/$PROCESS_$SYSTEMATIC
+----------------------------------------------------------------------------------------------------------------------------------
+bin          ch1    ch2    ch3  
+observation  6640   6021   9587 
+----------------------------------------------------------------------------------------------------------------------------------
+bin                               ch1            ch1            ch1            ch1            ch2            ch2            ch2            ch2            ch3            ch3            ch3            ch3          
+process                           ttsig          vj             ttbg           st             ttsig          vj             ttbg           st             ttsig          vj             ttbg           st           
+process                           0              1              2              3              0              1              2              3              0              1              2              3            
+rate                              6455.45957095  111.854750496  32.8813828351  120.003779778  6159.91363005  50.3662813538  25.8739147626  103.185450193  10062.1788601  135.003841228  36.2868892836  164.482996129
+----------------------------------------------------------------------------------------------------------------------------------
+JES                     shape     1.0            -              -              -              1.0            -              -              -              1.0            -              -              -            
+btag                    lnN       1.03           -              -              -              1.03           -              -              -              1.03           -              -              -            
+lumi                    lnN       1.023          1.023          1.023          1.023          1.023          1.023          1.023          1.023          1.023          1.023          1.023          1.023        
+rs                      shape     1.0            -              -              -              1.0            -              -              -              1.0            -              -              -            
+gt            param  1. 1. [0,10]
+bin2Rate      rateParam ch2 ttsig 0.0102700161581*(@0)^2+1.58645643586e-05*(@0)+0.974577862572 gt  
+bin3Rate      rateParam ch3 ttsig 0.00585174812843*(@0)^2+1.77919236885e-05*(@0)+0.975260161236 gt  
+bin1Rate      rateParam ch1 ttsig 0.0159828368198*(@0)^2+1.31113918268e-05*(@0)+0.973186251954 gt  
