@@ -12,10 +12,10 @@ process = [
 		]
 
 systematics = [
-		lnNSystematic("btagflat"	,["ttsig"]	,[1.03]),
+		lnNSystematic("flat"	,["ttsig"]	,[1.03]),
 		#lnNSystematic("ltag"	,["ttsig"]	,[1.0014]),
 		lnNSystematic("lumi"	,["ttsig","ttbg","vj","st"]	,[1.023,1.023,1.023,1.023]),
-		ShapeSystematic("btag"	,["ttsig"]),
+		ShapeSystematic("flat_shape"	,["ttsig"]),
 		#ShapeSystematic("ltag"	,["ttsig"]),
 		#ShapeSystematic("fsr"	,["ttsig"]),
 		#ShapeSystematic("isr"	,["ttsig"]),
