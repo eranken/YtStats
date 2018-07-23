@@ -1,8 +1,8 @@
 class Systematic(object):
 	def __init__(self,name,process):
 		self.name = name
-		self.process = process 
-	
+		self.process = process
+
 class lnNSystematic(Systematic):
 	def __init__(self,name,process,magnitude):
 		self.systType = "lnN"
@@ -16,12 +16,10 @@ class lnNSystematic(Systematic):
 class ShapeSystematic(Systematic):
 	def __init__(self,name,process):
 		super(ShapeSystematic,self).__init__(name,process)
+		self.binContent = {}
+		self.nBins = 0
 		self.systType = "shape"
+
 
 	def getSystName(self):
 		return self.name.replace("Up","").replace("Down","")
-
-
-
-
-

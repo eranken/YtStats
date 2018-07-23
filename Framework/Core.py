@@ -47,9 +47,11 @@ class RootFileReader(object):
 				anaBin.processList.append(processObj)
 			for systematic in systematics:
 				if systematic.systType == "shape":
+					systematic.nBins = nBins
 					for vary in ["Up","Down"]:
 						hist = self.inputFile.Get(systematic.name+vary)
-						setattr(systematic,vary,hist.GetBinContent(ibin))
+						systematic.binContent.update({str(ibin)+vary : hist.GetBinContent(ibin)})
+						print str(ibin)+": "+str(vary)+": "+str(hist.GetBinContent(ibin))+" attributes:  "+str(systematic.name)+str(systematic.process)
 				anaBin.systList.append(systematic)
 		return binDict
 
@@ -175,7 +177,8 @@ class DataCard(object):
 		outputFile.close()
 
 	def makeRootFile(self,outputDir):
-		binName = "bin"+str(self.analysisBin.binNumber)
+		iBin =self.analysisBin.binNumber
+		binName = "bin"+str(iBin)
 		outputFile = ROOT.TFile(outputDir+binName+".root","RECREATE")
 
 		outputFile.mkdir("Signal")
@@ -195,6 +198,6 @@ class DataCard(object):
 			for processName in systematic.process:
 				for vary in ["Up","Down"]:
 					tempHist = ROOT.TH1D(processName+"_"+systematic.name+vary,"",1,-0.5,0.5)
-					tempHist.SetBinContent(1,getattr(systematic,vary))
+					tempHist.SetBinContent(1,systematic.binContent[str(iBin)+vary])
 					tempHist.Write()
 		outputFile.Close()
