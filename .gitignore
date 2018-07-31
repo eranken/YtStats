@@ -12,7 +12,7 @@
 *.swn
 *.swm
 *.png
-*.pdf
+#*.pdf
 *.log
 *.aux
 *.tex

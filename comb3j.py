@@ -15,5 +15,6 @@ parser.add_argument('--opt',action='store', type=str, default = "")
 
 args = parser.parse_args()
 
+os.system('cmsenv')
 os.system('combine -M '+args.M+' -d card.root --redefineSignalPOIs '+args.poi+' --freezeParameters '+args.freeze+' --setParameters '+args.set+' -t '+args.t+' '+args.opt)
-#os.system('python ../../diffNuisances.py --poi '+args.poi+' -a fitDiagnostics.root -g '+args.o)
+os.system('python ../../diffNuisances.py --abs --poi '+args.poi+' -a fitDiagnostics.root -g '+args.o)
