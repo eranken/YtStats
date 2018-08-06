@@ -8,8 +8,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--o',action='store', type=str, default = "diffNuisances.root")
 parser.add_argument('--M',action='store', type=str, default = "FitDiagnostics")
 parser.add_argument('--t',action='store', type=str, default = "-1")
-parser.add_argument('--width',action='store', type=float, default = "2.5")
+parser.add_argument('--width',action='store', type=str, default = "2.5")
 parser.add_argument('--freeze',action='store', type=str, default = "")
+parser.add_argument('--pts',action='store', type=str, default = "2500")
 parser.add_argument('--set',action='store', type=str, default = "")
 parser.add_argument('--poi',action='store', type=str, default = "")
 parser.add_argument('--opt',action='store', type=str, default = "")
@@ -22,7 +23,7 @@ params = args.P.split(',')
 for param in params:
 	print param
 
-mystr = 'combine -M '+args.M+' -d card.root'
+mystr = 'combine -M MultiDimFit -d card.root --algo=grid --points='+args.pts
 mystr += ' --redefineSignalPOIs '
 for param in params:
 	mystr += param+','
