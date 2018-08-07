@@ -13,13 +13,26 @@ parser.add_argument('--set',action='store', type=str, default = "")
 parser.add_argument('--poi',action='store', type=str, default = "")
 parser.add_argument('--opt',action='store', type=str, default = "")
 parser.add_argument('--P',action='store', type=str, default = "gt")
+parser.add_argument('--gtpos',dest='gtpos', action='store_true')
+parser.set_defaults(gtpos=False)
 
 (args, opts) = parser.parse_known_args()
 width = args.width
-
 params = args.P.split(',')
-for param in params:
-	print param
+
+# default vals
+gtmax = 10
+gtmin = -10
+
+# overwrite defaults if scanning gt
+if 'gt' in params:
+	gtmin = -width
+	gtmax = width
+
+# finally, overwrite minimum if constraining gt > 0 is desired
+if args.gtpos:
+	gtmin = 0
+
 
 mystr = 'combine -M MultiDimFit -d card.root --algo=grid --points='+args.pts
 mystr += ' --redefineSignalPOIs '
@@ -30,13 +43,13 @@ mystr += ' --setParameters r=1,'+args.set
 mystr += ' -t '+args.t
 for param in params:
 	mystr += ' -P '+param
-mystr += ' --setParameterRanges '
+mystr += ' --setParameterRanges gt='gtmin+','+gtmax+':'
 for param in params:
-	if param =='gt':
-		mystr+='gt=0,'+width+':'
-	else: mystr+= param+'=-'+width+','+width+':'
+	if param !='gt':
+		mystr+= param+'=-'+width+','+width+':'
 mystr += ' --saveInactivePOI 1 --floatOtherPOIs=1'
 for opt in opts:
 	mystr += ' '+opt
 
+print mystr
 os.system(mystr)
