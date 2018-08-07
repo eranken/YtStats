@@ -21,8 +21,8 @@ width = args.width
 params = args.P.split(',')
 
 # default vals
-gtmax = 10
-gtmin = -10
+gtmax = '10'
+gtmin = '-10'
 
 # overwrite defaults if scanning gt
 if 'gt' in params:
