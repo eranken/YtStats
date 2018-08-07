@@ -36,9 +36,10 @@ if args.gtpos:
 
 
 mystr = 'combine -M MultiDimFit -d card.root --algo=grid --points='+args.pts
-mystr += ' --redefineSignalPOIs '
+mystr += ' --redefineSignalPOIs gt,'
 for param in params:
-	mystr += param+','
+	if param != 'gt':
+		mystr += param+','
 mystr += ' --freezeParameters r,'+args.freeze
 mystr += ' --setParameters r=1,'+args.set
 mystr += ' -t '+args.t
