@@ -31,7 +31,7 @@ if 'gt' in params:
 
 # finally, overwrite minimum if constraining gt > 0 is desired
 if args.gtpos:
-	gtmin = 0
+	gtmin = '0'
 
 
 mystr = 'combine -M MultiDimFit -d card.root --algo=grid --points='+args.pts
