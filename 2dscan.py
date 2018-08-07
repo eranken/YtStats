@@ -5,8 +5,6 @@ from subprocess import call
 #comment
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--o',action='store', type=str, default = "diffNuisances.root")
-parser.add_argument('--M',action='store', type=str, default = "FitDiagnostics")
 parser.add_argument('--t',action='store', type=str, default = "-1")
 parser.add_argument('--width',action='store', type=str, default = "2.5")
 parser.add_argument('--freeze',action='store', type=str, default = "")
