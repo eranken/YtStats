@@ -14,6 +14,7 @@ parser.add_argument('--poi',action='store', type=str, default = "")
 parser.add_argument('--opt',action='store', type=str, default = "")
 parser.add_argument('--P',action='store', type=str, default = "gt")
 parser.add_argument('--gtpos',dest='gtpos', action='store_true')
+parser.add_argument('--out',action='store', type=str, default = "2dscan.root")
 parser.set_defaults(gtpos=False)
 
 (args, opts) = parser.parse_known_args()
