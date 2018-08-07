@@ -27,7 +27,7 @@ gtmin = '-10'
 
 # overwrite defaults if scanning gt
 if 'gt' in params:
-	gtmin = -width
+	gtmin = '-'+width
 	gtmax = width
 
 # finally, overwrite minimum if constraining gt > 0 is desired
