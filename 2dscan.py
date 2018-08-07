@@ -43,7 +43,7 @@ mystr += ' --setParameters r=1,'+args.set
 mystr += ' -t '+args.t
 for param in params:
 	mystr += ' -P '+param
-mystr += ' --setParameterRanges gt='gtmin+','+gtmax+':'
+mystr += ' --setParameterRanges gt='+gtmin+','+gtmax+':'
 for param in params:
 	if param !='gt':
 		mystr+= param+'=-'+width+','+width+':'
