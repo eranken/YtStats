@@ -54,3 +54,4 @@ for opt in opts:
 
 print mystr
 os.system(mystr)
+os.system('mv higgsCombineTest.MultiDimFit.mH120.root '+args.out)
