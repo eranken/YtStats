@@ -61,4 +61,4 @@ for param in params:
 	outfile+="_"+param
 outfile+='.root'
 print 'mv higgsCombineTest.MultiDimFit.mH120.root '+outfile
-os.system('mv higgsCombineTest.MultiDimFit.mH120.root '+args.out)
+os.system('mv higgsCombineTest.MultiDimFit.mH120.root '+outfile)
