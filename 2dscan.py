@@ -14,7 +14,7 @@ parser.add_argument('--poi',action='store', type=str, default = "")
 parser.add_argument('--opt',action='store', type=str, default = "")
 parser.add_argument('--P',action='store', type=str, default = "gt")
 parser.add_argument('--gtpos',dest='gtpos', action='store_true')
-parser.add_argument('--out',action='store', type=str, default = "2dscan.root")
+parser.add_argument('--out',action='store', type=str, default = "2dscan")
 parser.set_defaults(gtpos=False)
 
 (args, opts) = parser.parse_known_args()
@@ -55,5 +55,10 @@ for opt in opts:
 
 print mystr
 os.system(mystr)
-print 'mv higgsCombineTest.MultiDimFit.mH120.root '+args.out
+
+outfile = args.out
+for param in params:
+	outfile+="_"+param
+outfile+='.root'
+print 'mv higgsCombineTest.MultiDimFit.mH120.root '+outfile
 os.system('mv higgsCombineTest.MultiDimFit.mH120.root '+args.out)
