@@ -11,8 +11,7 @@ process = [
 		"st",
 		]
 
-syslist=['JES','JES_AbsoluteScale','JES_PileUpPtRef','JES_FlavorQCD','flatsys','mtop','JES_RelativeFSR','JES_RelativePtEC2','pdf0','JES_RelativePtEC1','elrec','rs','eltrg','JES_AbsoluteMPFBias','mutrg','murec','JER','JES_Fragmentation','fs','bfrag','JES_SinglePionHCAL','bdec','JES_RelativePtBB','JES_RelativeSample','JES_PileUpPtEC1','JES_RelativeBal','pdf2','pdf3','JES_PileUpDataMC','pdf1','pdf7','pdf4','pdf5','alphas','JES_SinglePionECAL','btag','isr','pu','JES_RelativeJEREC1','ltag','fsr','JES_PileUpPtBB','JES_TimePtEta',]
-
+syslist=['JES_AbsoluteScale','JES_FlavorQCD','flatsys','JES_PileupPtBB','mtop','JES_RelativeFSR','JES_RelativePtEC2','elrec','JES_RelativePtEC1','rs','eltrg','JES_AbsoluteMPFBias','mutrg','murec','JER','JES_Fragmentation','fs','bfrag','JES_SinglePionHCAL','bdec','JES_RelativePtBB','JES_RelativeSample','JES_RelativeBal','pdf2','pdf3','pdf0','pdf1','pdf7','pdf4','pdf5','alphas','JES_SinglePionECAL','btag','isr','pu','JES_PileupPtRef','JES_RelativeJEREC1','ltag','fsr','JES_PileupPtEC1','JES_PileupDataMC','JES_TimePtEta',]
 
 systematics = [
 		#lnNSystematic("flat"	,["ttsig"]	,[1.03]),
