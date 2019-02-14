@@ -51,6 +51,7 @@ systematics = [
 		]
 
 for sys in syslist:
+	print sys
 	systematics.append(ShapeSystematic(sys,["ttsig"]))
 
 parser = argparse.ArgumentParser()
