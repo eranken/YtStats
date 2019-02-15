@@ -1,0 +1,25 @@
+
+*     number of categories
+*     number of samples minus one
+*     number of nuisance parameters
+-----------------------------------------------------------------------
+shapes * * bin4.root $CHANNEL/$PROCESS $CHANNEL/$PROCESS_$SYSTEMATIC
+---------------------------------------------------------------------------------
+
+bin	Signal	
+observation	6874.0
+---------------------------------------------------------------------------------
+bin	Signal	Signal	Signal	Signal	
+
+
+process	vj	ttbg	ttsig	st	
+process	1	2	0	4	
+rate		284.692527894	65.622492165	9189.62926468	179.878971005	
+---------------------------------------------------------------------------------
+
+lumi	lnN	1.023	1.023	1.023	1.023	
+ltag	shape	-	-	1	-	
+btag	shape	-	-	1	-	
+gt	param	1.	1.	[-10,10]
+bin4Rate	rateParam	Signal	ttsig	0.00754013013461*(@0)^2+1.67368242969e-05*(@0)+0.975244563242	gt
+
