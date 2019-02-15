@@ -19,8 +19,6 @@ rate		261.761898435	57.8733559117	10207.9036327	198.468339281
 
 lumi	lnN	1.023	1.023	1.023	1.023	
 ltag	shape	-	-	1	-	
-btag	shape	-	-	1	-	
-isr	shape	-	-	1	-	
 pdf5	shape	-	-	1	-	
 gt	param	1.	1.	[-10,10]
 bin6Rate	rateParam	Signal	ttsig	0.00429264621784*(@0)^2+1.79301566917e-05*(@0)+0.97546684805	gt
