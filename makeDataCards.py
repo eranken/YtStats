@@ -11,7 +11,8 @@ process = [
 		"st",
 		]
 
-syslist=['JES_AbsoluteScale','JES_FlavorQCD','flatsys','JES_PileupPtBB','mtop','JES_RelativeFSR','JES_RelativePtEC2','elrec','JES_RelativePtEC1','rs','eltrg','JES_AbsoluteMPFBias','mutrg','murec','JER','JES_Fragmentation','fs','bfrag','JES_SinglePionHCAL','bdec','JES_RelativePtBB','JES_RelativeSample','JES_RelativeBal','pdf2','pdf3','pdf0','pdf1','pdf7','pdf4','pdf5','alphas','JES_SinglePionECAL','btag','isr','pu','JES_PileupPtRef','JES_RelativeJEREC1','ltag','fsr','JES_PileupPtEC1','JES_PileupDataMC','JES_TimePtEta',]
+syslist=['JES_FlavorQCD','flatsys','JES_PileupPtBB','mtop','pdf3','pdf0','JES_RelativePtEC1','rs','JES_SinglePionECAL','JES_AbsoluteMPFBias','mutrg','murec','JES_Fragmentation','fs','bfrag','JES_SinglePionHCAL','bdec','JES_RelativeSample','pdf2','JES_RelativeFSR','elrec','pdf1','pdf7','pdf4','pdf5','alphas','btag','isr','pu','JES_PileupPtRef','fsr','JES_PileupPtEC1','JES_PileupDataMC','JES_TimePtEta',]
+
 
 systematics = [
 		#lnNSystematic("flat"	,["ttsig"]	,[1.03]),
