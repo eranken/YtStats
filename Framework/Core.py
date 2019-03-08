@@ -18,8 +18,8 @@ class TextFileReader(object):
 		textFile = open(filePath,"r")
 		lines = textFile.readlines()
 		for line in lines:
-			binNumber,c0,c1,c2 = line.split()
-			binDict[int(binNumber)].quadCoeff = [float(c0),float(c1),float(c2)]
+			binNumber,c0,c1,c2,c3 = line.split()
+			binDict[int(binNumber)].quadCoeff = [float(c0),float(c1),float(c2),float(c3)]
 
 class RootFileReader(object):
 	def __init__(self):
@@ -97,10 +97,11 @@ class SystWriter(object):
 		outputStr = ""
 		outputStr += "gt\tparam\t1.\t1.\t[0,10]\n"
 		#outputStr += "gt\tflatParam\n"
-		outputStr += binName+"Rate\trateParam\tSignal\tttsig\t({0}*(@0)^2{1}*(@0){2})*(({0}*(@0)^2{1}*(@0){2}-1)*0.02+1)^(@1)\tgt,weakCorr\n".format(
+		outputStr += binName+"Rate\trateParam\tSignal\tttsig\t({0}*(@0)^2{1}*(@0){2})*(({0}*(@0)^2{1}*(@0){2}-1)*{3}+1)^(@1)\tgt,weakCorr\n".format(
 				quadCoeff[0],
 				"+"+str(quadCoeff[1]) if quadCoeff[1] > 0. else "-"+str(abs(quadCoeff[1])),
 				"+"+str(quadCoeff[2]) if quadCoeff[2] > 0. else "-"+str(abs(quadCoeff[2])),
+				quadCoeff[3]
 				)
 		#outputStr += binName+"Rate\trateParam\tSignal\tttsig\t{0}*(@0)^2\tgt\n".format(quadCoeff[0])
 		outputStr += "\n"
