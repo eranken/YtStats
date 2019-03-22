@@ -95,15 +95,15 @@ class SystWriter(object):
 
 	def writeYukawa(self,binName,quadCoeff):
 		outputStr = ""
-		outputStr += "gt\tparam\t1.\t1.\t[0,10]\n"
-		#outputStr += "gt\tflatParam\n"
-		outputStr += binName+"Rate\trateParam\tSignal\tttsig\t({0}*(@0)^2{1}*(@0){2})*(({0}*(@0)^2{1}*(@0){2}-1)*{3}+1)^(@1)\tgt,weakCorr\n".format(
+		outputStr += "yt\tparam\t1.\t1.\t[0,10]\n"
+		#outputStr += "yt\tflatParam\n"
+		outputStr += binName+"Rate\trateParam\tSignal\tttsig\t({0}*(@0)^2{1}*(@0){2})*(({0}*(@0)^2{1}*(@0){2}-1)*{3}+1)^(@1)\tyt,weakCorr\n".format(
 				quadCoeff[0],
 				"+"+str(quadCoeff[1]) if quadCoeff[1] > 0. else "-"+str(abs(quadCoeff[1])),
 				"+"+str(quadCoeff[2]) if quadCoeff[2] > 0. else "-"+str(abs(quadCoeff[2])),
 				quadCoeff[3]
 				)
-		#outputStr += binName+"Rate\trateParam\tSignal\tttsig\t{0}*(@0)^2\tgt\n".format(quadCoeff[0])
+		#outputStr += binName+"Rate\trateParam\tSignal\tttsig\t{0}*(@0)^2\tyt\n".format(quadCoeff[0])
 		outputStr += "\n"
 		outputStr += "weakCorr\tparam\t0.\t1.\t[-5.,5.]"
 		return outputStr
