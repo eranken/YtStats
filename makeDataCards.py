@@ -14,7 +14,7 @@ inDir = option.inDir
 year = option.year
 chan = option.chan
 sysfile = open(inDir+'combine_sys_'+year+chan+'.txt')
-syslist = testlistfile.read().split('\n')
+syslist = sysfile.read().split('\n')
 syslist = filter(None, syslist) #
 print syslist
 
