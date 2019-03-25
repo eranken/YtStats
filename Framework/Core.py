@@ -145,12 +145,12 @@ class DataCard(object):
 		self.systLines = ""
 		return
 
-	def makeCard(self,outputDir):
+	def makeCard(self,outputDir,year,chan):
 		outputStr = ""
 
 		binName = "bin"+str(self.analysisBin.binNumber)
 
-		outputStr = self.makeHeader(outputDir+binName+".root")
+		outputStr = self.makeHeader(outputDir+binName+"_"+year+chan+".root")
 		outputStr += self.binNameObservation+"\n"
 		outputStr += self.observation+"\t"+str(self.analysisBin.data.count)+"\n"
 		outputStr += self.sep+"\n"
