@@ -1,8 +1,22 @@
 from Framework.Core import *
 import argparse,os
 
-#test comment
-#testagain
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--inDir',action='store')
+parser.add_argument('--outDir',action='store')
+parser.add_argument('--year', action='store', type=str, default='17')
+parser.add_argument('--chan', action='store', type=str, default='all')
+
+option = parser.parse_args()
+
+inDir = option.inDir
+year = option.year
+chan = option.chan
+sysfile = open(inDir+'combine_sys'+year+chan+'.txt')
+syslist = testlistfile.read().split('\n')
+syslist = filter(None, syslist) #
+print syslist
 
 process = [
 		"vj",
@@ -10,9 +24,6 @@ process = [
 		"ttsig",
 		"st",
 		]
-
-syslist=['JES_FlavorQCD','flatsys','JES_PileupPtBB','mtop','pdf3','pdf0','JES_RelativePtEC1','rs','JES_SinglePionECAL','JES_AbsoluteMPFBias','mutrg','murec','JES_Fragmentation','fs','bfrag','JES_SinglePionHCAL','bdec','JES_RelativeSample','pdf2','JES_RelativeFSR','elrec','pdf1','pdf7','pdf4','pdf5','alphas','btag','isr','pu','JES_PileupPtRef','fsr','JES_PileupPtEC1','JES_PileupDataMC','JES_TimePtEta',]
-
 
 systematics = [
 		#lnNSystematic("flat"	,["ttsig"]	,[1.03]),
@@ -50,21 +61,17 @@ systematics = [
 		# ShapeSystematic("alphas"	,["ttsig"]),
 		]
 
+
+
 for sys in syslist:
 	print sys
 	systematics.append(ShapeSystematic(sys,["ttsig"]))
-
-parser = argparse.ArgumentParser()
-parser.add_argument('--inDir',action='store')
-parser.add_argument('--outDir',action='store')
-
-option = parser.parse_args()
 
 rootFileReader = RootFileReader()
 rootFileReader.readFile(option.inDir+'combine.root')
 binCollection = rootFileReader.createBinCollection(process,systematics)
 
-textFilePath = option.inDir+'combine_quadEW.txt'
+textFilePath = option.inDir+'combine_EW_'+year+chan+'.txt'
 # textFilePath = option.inDir+'qua.txt'
 textFileReader = TextFileReader()
 textFileReader.readTextFile(textFilePath,binCollection)
