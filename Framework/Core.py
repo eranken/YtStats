@@ -148,9 +148,9 @@ class DataCard(object):
 	def makeCard(self,outputDir,year,chan):
 		outputStr = ""
 
-		binName = "bin"+str(self.analysisBin.binNumber)
+		binName = "bin"+str(self.analysisBin.binNumber)+"_"+year+chan
 
-		outputStr = self.makeHeader(outputDir+binName+"_"+year+chan+".root")
+		outputStr = self.makeHeader(outputDir+binName+".root")
 		outputStr += self.binNameObservation+"\n"
 		outputStr += self.observation+"\t"+str(self.analysisBin.data.count)+"\n"
 		outputStr += self.sep+"\n"
