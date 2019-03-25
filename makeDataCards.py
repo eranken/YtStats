@@ -13,7 +13,7 @@ option = parser.parse_args()
 inDir = option.inDir
 year = option.year
 chan = option.chan
-sysfile = open(inDir+'combine_sys'+year+chan+'.txt')
+sysfile = open(inDir+'combine_sys_'+year+chan+'.txt')
 syslist = testlistfile.read().split('\n')
 syslist = filter(None, syslist) #
 print syslist
