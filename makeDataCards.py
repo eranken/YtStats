@@ -11,6 +11,10 @@ parser.add_argument('--chan', action='store', type=str, default='all')
 option = parser.parse_args()
 
 inDir = option.inDir
+outDir = option.outDir
+print outDir
+print inDir
+
 year = option.year
 chan = option.chan
 sysfile = open(inDir+'combine_sys_'+year+chan+'.txt')
@@ -76,8 +80,8 @@ textFilePath = option.inDir+'combine_EW_'+year+chan+'.txt'
 textFileReader = TextFileReader()
 textFileReader.readTextFile(textFilePath,binCollection)
 
-if not os.path.exists(option.outDir):
-	os.makedirs(option.outDir)
+if not os.path.exists(outDir):
+	os.makedirs(outDir)
 
 for ibin,anaBin in binCollection.iteritems():
 	dataCard = DataCard(anaBin)
