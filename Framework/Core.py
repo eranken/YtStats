@@ -147,7 +147,6 @@ class DataCard(object):
 
 	def makeCard(self,outputDir,year,chan):
 		outputStr = ""
-
 		binName = "bin"+str(self.analysisBin.binNumber)+"_"+year+chan
 
 		outputStr = self.makeHeader(outputDir+binName+".root")
@@ -178,9 +177,9 @@ class DataCard(object):
 		outputFile.write(outputStr)
 		outputFile.close()
 
-	def makeRootFile(self,outputDir):
+	def makeRootFile(self,outputDir,year,chan):
 		iBin =self.analysisBin.binNumber
-		binName = "bin"+str(iBin)
+		binName = "bin"+str(self.analysisBin.binNumber)+"_"+year+chan
 		outputFile = ROOT.TFile(outputDir+binName+".root","RECREATE")
 
 		outputFile.mkdir("Signal")
