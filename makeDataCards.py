@@ -3,15 +3,14 @@ import argparse,os
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--inDir',action='store')
-parser.add_argument('--outDir',action='store')
+parser.add_argument('--input',action='store')
 parser.add_argument('--year', action='store', type=str, default='17')
 parser.add_argument('--chan', action='store', type=str, default='all')
 
 option = parser.parse_args()
 
-inDir = option.inDir
-outDir = option.outDir
+inDir = 'Input/'+option.input+'/'
+outDir = 'Output/'+option.input+'/'
 print outDir
 print inDir
 
