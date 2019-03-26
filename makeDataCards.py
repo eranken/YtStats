@@ -86,6 +86,6 @@ if not os.path.exists(outDir):
 for ibin,anaBin in binCollection.iteritems():
 	dataCard = DataCard(anaBin)
 	dataCard.makeCard(option.outDir,year,chan)
-	dataCard.makeRootFile(option.outDir)
+	dataCard.makeRootFile(option.outDir,year,chan)
 
 rootFileReader.cleanUp()
