@@ -71,10 +71,10 @@ for sys in syslist:
 	systematics.append(ShapeSystematic(sys,["ttsig"]))
 
 rootFileReader = RootFileReader()
-rootFileReader.readFile(option.inDir+'combine_'+year+chan+'.root')
+rootFileReader.readFile(inDir+'combine_'+year+chan+'.root')
 binCollection = rootFileReader.createBinCollection(process,systematics)
 
-textFilePath = option.inDir+'combine_EW_'+year+chan+'.txt'
+textFilePath = inDir+'combine_EW_'+year+chan+'.txt'
 # textFilePath = option.inDir+'qua.txt'
 textFileReader = TextFileReader()
 textFileReader.readTextFile(textFilePath,binCollection)
