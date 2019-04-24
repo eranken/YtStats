@@ -1,6 +1,8 @@
 fs
+hd
 mtop
 rs
+tune16
 bfrag16
 btag16
 JES16
