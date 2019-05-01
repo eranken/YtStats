@@ -1,13 +1,8 @@
-pdf2_17
-pdf1_17
 fs
-pdf4_17
 bdec_17
 rs
 JER_17
 isr
-pdf0_17
-pdf3_17
 alphas17_17
 bfrag_17
 fsr
@@ -15,6 +10,6 @@ hd
 mtop
 ltag_17
 flatsys17
-btag_17
 tune
+btag_17
 JES_17
