@@ -1,5 +1,6 @@
 pdf2_17
 JES_FlavorQCD_17
+murec_17
 JES_SinglePionECAL_17
 pdf0_17
 pdf3_17
@@ -9,6 +10,7 @@ JES_PileupPtEC1_17
 mtop
 JES_RelativeFSR_17
 rs
+mutrg_17
 JES_AbsoluteMPFBias_17
 hd
 pdf4_17
@@ -19,6 +21,7 @@ pdf1_17
 JES_Fragmentation_17
 ltag_17
 flatsys17
+elrec_17
 tune
 JES_PileupPtBB_17
 bdec_17

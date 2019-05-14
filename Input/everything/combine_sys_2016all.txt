@@ -1,4 +1,5 @@
 pdf2_16
+murec_16
 JES_FlavorQCD_16
 mtop
 JES_SinglePionECAL_16
@@ -20,6 +21,7 @@ pdf1_16
 JES_Fragmentation_16
 flatsys16
 ltag_16
+elrec_16
 hd
 JES_PileupPtBB_16
 bdec_16
