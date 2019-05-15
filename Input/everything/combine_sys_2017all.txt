@@ -13,7 +13,6 @@ rs
 mutrg_17
 JES_AbsoluteMPFBias_17
 hd
-pdf4_17
 fs
 JES_SinglePionHCAL_17
 JES_PileupDataMC_17
