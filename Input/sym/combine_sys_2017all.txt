@@ -10,7 +10,6 @@ JES_PileupPtEC1_17
 mtop
 JES_RelativeFSR_17
 rs
-JES_RelativePtEC1_17
 mutrg_17
 JES_AbsoluteMPFBias_17
 hd

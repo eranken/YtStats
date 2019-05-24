@@ -13,6 +13,7 @@ mutrg_18
 JES_RelativePtEC1_18
 rs
 JES_RelativeBal_18
+hd
 pdf4_18
 fs
 JES_SinglePionHCAL_18
