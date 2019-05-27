@@ -15,6 +15,7 @@ eltrg_17
 hd
 fs
 JES_SinglePionHCAL_17
+pu_17
 JES_PileupDataMC_17
 pdf1_17
 JES_Fragmentation_17

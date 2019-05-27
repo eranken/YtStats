@@ -17,6 +17,7 @@ tune_16
 fs
 isr_16
 pdf4_16
+pu_16
 JES_AbsoluteScale_16
 JES_PileupDataMC_16
 pdf1_16
