@@ -1,7 +1,6 @@
 JES_SinglePionECAL_18
 murec_18
 JES_FlavorQCD_18
-pdf2
 mtop
 JES_RelativeFSR_18
 JES_PileupPtEC1_18
@@ -17,7 +16,6 @@ hd
 fs
 JES_SinglePionHCAL_18
 pu_18
-JES_RelativePtBB_18
 elrec_18
 flatsys18
 ltag_18
@@ -25,7 +23,6 @@ JES_Fragmentation_18
 pdf3
 pdf0
 pdf1
-JES_AbsoluteScale_18
 JES_PileupDataMC_18
 tune
 JES_AbsoluteStat_18
@@ -36,6 +33,5 @@ JES_PileupPtBB_18
 btag_18
 fsr
 JES_RelativeSample_18
-JES_RelativeJEREC1_18
 isr
 JES_TimePtEta_18
