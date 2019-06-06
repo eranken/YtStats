@@ -2,7 +2,6 @@ JES_FlavorQCD_17
 murec_17
 JES_SinglePionECAL_17
 bfrag_17
-alphas_17
 JES_PileupPtEC1_17
 mtop
 JES_RelativeFSR_17

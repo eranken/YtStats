@@ -4,7 +4,6 @@ mtop
 JES_SinglePionECAL_16
 fsr_16
 bfrag_16
-alphas_16
 JES_RelativeFSR_16
 JES_RelativeBal_16
 JERup_16
