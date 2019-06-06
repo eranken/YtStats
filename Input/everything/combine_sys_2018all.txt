@@ -4,7 +4,6 @@ JES_FlavorQCD_18
 mtop
 JES_RelativeFSR_18
 JES_PileupPtEC1_18
-alphas_18
 bfrag_18
 JES_AbsoluteMPFBias_18
 mutrg_18
@@ -20,9 +19,6 @@ elrec_18
 flatsys18
 ltag_18
 JES_Fragmentation_18
-pdf3
-pdf0
-pdf1
 JES_PileupDataMC_18
 tune
 JES_AbsoluteStat_18

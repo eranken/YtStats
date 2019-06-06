@@ -1,13 +1,10 @@
-pdf2_16
 murec_16
 JES_FlavorQCD_16
-JES_RelativeFSR_16
+mtop
 JES_SinglePionECAL_16
-pdf0_16
 fsr_16
 bfrag_16
-alphas_16
-mtop
+JES_RelativeFSR_16
 JES_RelativeBal_16
 JERup_16
 rs
@@ -16,11 +13,9 @@ mutrg_16
 tune_16
 fs
 isr_16
-pdf4_16
 pu_16
 JES_AbsoluteScale_16
 JES_PileupDataMC_16
-pdf1_16
 JES_Fragmentation_16
 flatsys16
 ltag_16
