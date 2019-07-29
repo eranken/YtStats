@@ -2,10 +2,10 @@ JES_PileupDataMC_corr
 murec_17
 rs_corr
 hd_corr
-alphas_17
 JES_PileupPtEC1_17
 fsr_corr
 JES_RelativeFSR_17
+met_17
 bfrag_corr
 pdf0_corr
 JERup_17
@@ -13,6 +13,7 @@ JES_PileupPtBB_corr
 pdf1_corr
 elrec_corr
 JES_AbsoluteMPFBias_corr
+pdf_as_17
 eltrg_17
 murec_corr
 ltag_corr
@@ -41,5 +42,6 @@ fs_corr
 JES_Fragmentation_corr
 btag_corr
 tune_corr
+prefire_17
 JES_RelativeSample_17
 btag_17
