@@ -5,7 +5,6 @@ hd_corr
 JES_PileupPtEC1_17
 fsr_corr
 JES_RelativeFSR_17
-met_17
 bfrag_corr
 pdf0_corr
 JERup_17
