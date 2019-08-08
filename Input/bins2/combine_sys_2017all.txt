@@ -1,6 +1,7 @@
 JES_PileupDataMC_corr
 murec_17
 rs_corr
+hd_corr
 JES_PileupPtEC1_17
 fsr_corr
 JES_RelativeFSR_17
@@ -13,7 +14,7 @@ elrec_corr
 JES_AbsoluteMPFBias_corr
 pdf_as_17
 eltrg_17
-hd_corr
+murec_corr
 ltag_corr
 JES_SinglePionHCAL_corr
 JES_TimePtEta_17
@@ -22,7 +23,6 @@ JES_PileupPtRef_corr
 pdf3_corr
 JES_FlavorQCD_corr
 isr_corr
-murec_corr
 JES_PileupPtEC1_corr
 pu_17
 JES_PileupDataMC_17
@@ -36,7 +36,6 @@ JERdown_17
 bdec_corr
 JES_RelativeFSR_corr
 JES_PileupPtRef_17
-TESTmet_17
 mtop_corr
 fs_corr
 JES_Fragmentation_corr

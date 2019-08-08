@@ -17,7 +17,6 @@ elrec_corr
 JES_AbsoluteMPFBias_corr
 murec_corr
 ltag_corr
-JES_TimePtEta_16
 JES_AbsoluteScale_corr
 JES_PileupPtRef_corr
 isr_16
@@ -39,7 +38,7 @@ JES_AbsoluteStat_16
 mtop_corr
 fs_corr
 JES_Fragmentation_corr
-TESTmet_16
+JES_TimePtEta_16
 JES_FlavorQCD_corr
 JES_RelativeJEREC1_16
 prefire_16
