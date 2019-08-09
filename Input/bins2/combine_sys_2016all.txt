@@ -11,7 +11,6 @@ pdf_as_16
 bfrag_corr
 JES_RelativeBal_16
 tune_16
-JERup_16
 JES_PileupPtBB_corr
 elrec_corr
 JES_AbsoluteMPFBias_corr
@@ -30,9 +29,9 @@ JES_PileupDataMC_corr
 elrec_16
 JES_PileupPtBB_16
 JES_SinglePionECAL_corr
-JERdown_16
 bdec_corr
 JES_RelativeFSR_corr
+JER_16
 JES_RelativeBal_corr
 JES_AbsoluteStat_16
 mtop_corr
