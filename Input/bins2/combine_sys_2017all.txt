@@ -7,7 +7,7 @@ fsr_corr
 JES_RelativeFSR_17
 bfrag_corr
 pdf0_corr
-TESTmet_17
+isr_corr
 JES_PileupPtBB_corr
 pdf1_corr
 elrec_corr
@@ -22,7 +22,7 @@ pdf2_corr
 JES_PileupPtRef_corr
 pdf3_corr
 JES_FlavorQCD_corr
-isr_corr
+TESTmet_corr
 JES_PileupPtEC1_corr
 pu_17
 JES_PileupDataMC_17

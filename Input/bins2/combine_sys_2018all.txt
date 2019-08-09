@@ -12,7 +12,7 @@ mutrg_18
 pdf0_corr
 JES_RelativePtEC1_18
 JES_RelativeFSR_corr
-TESTmet_18
+isr_corr
 JES_PileupPtBB_corr
 pdf1_corr
 elrec_corr
@@ -23,7 +23,7 @@ ltag_corr
 JES_PileupPtRef_corr
 pdf3_corr
 JES_FlavorQCD_corr
-isr_corr
+TESTmet_corr
 JES_PileupPtEC1_corr
 elrec_18
 flatsys18
