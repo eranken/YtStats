@@ -8,6 +8,7 @@ JES_RelativeFSR_17
 met_17
 bfrag_corr
 JES_RelativeBal_17
+JERup_17
 JES_RelativePtEC1_17
 JES_PileupPtBB_corr
 elrec_corr
@@ -28,9 +29,9 @@ elrec_17
 mutrg_17
 JES_PileupPtBB_17
 JES_SinglePionECAL_corr
+JERdown_17
 bdec_corr
 JES_RelativeFSR_corr
-JER_17
 JES_PileupPtRef_17
 JES_RelativeBal_corr
 mtop_corr
