@@ -13,15 +13,15 @@ JES_RelativePtEC1_17
 JES_PileupPtBB_corr
 elrec_corr
 JES_AbsoluteMPFBias_corr
-eltrg_17
+JES_SinglePionHCAL_corr
 murec_corr
 ltag_corr
-JES_SinglePionHCAL_corr
 JES_AbsoluteScale_corr
 JES_PileupPtRef_corr
 JES_FlavorQCD_corr
 isr_corr
 JES_PileupPtEC1_corr
+pu_17
 JES_PileupDataMC_17
 ltag_17
 flatsys17
