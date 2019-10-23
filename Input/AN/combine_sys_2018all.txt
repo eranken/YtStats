@@ -7,6 +7,7 @@ hd_corr
 JES_RelativeFSR_18
 JES_PileupPtEC1_18
 bfrag_corr
+pu_corr
 met_18
 mutrg_18
 pdf0_corr

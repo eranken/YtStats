@@ -10,6 +10,7 @@ JES_RelativeFSR_16
 mutrg_16
 pdf_as_16
 bfrag_corr
+pu_corr
 pdf5_16
 JES_RelativeBal_16
 tune_16
