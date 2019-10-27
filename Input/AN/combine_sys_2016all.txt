@@ -13,6 +13,7 @@ bfrag_corr
 pu_corr
 pdf5_16
 JES_RelativeBal_16
+rsfs_corr
 tune_16
 JERup_16
 JES_PileupPtBB_corr
@@ -48,6 +49,5 @@ JES_FlavorQCD_corr
 JES_RelativeJEREC1_16
 prefire_16
 JES_RelativeSample_16
-rsfs_16
 btag_corr
 btag_16

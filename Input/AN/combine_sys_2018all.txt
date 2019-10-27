@@ -11,6 +11,7 @@ pu_corr
 met_18
 mutrg_18
 pdf0_corr
+rsfs_corr
 btag_18
 JERup_18
 JES_PileupPtBB_corr
@@ -27,7 +28,6 @@ pdf3_corr
 tune_corr
 isr_corr
 JES_PileupPtEC1_corr
-rsfs_18
 elrec_18
 flatsys18
 ltag_18
