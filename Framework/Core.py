@@ -17,9 +17,18 @@ class TextFileReader(object):
 	def readTextFile(self,filePath,binDict):
 		textFile = open(filePath,"r")
 		lines = textFile.readlines()
+#read the yukawa bin rate coefficients. option to include uncertainty term as extra number in text file
 		for line in lines:
-			binNumber,c0,c1,c2,c3 = line.split()
-			binDict[int(binNumber)].quadCoeff = [float(c0),float(c1),float(c2),float(c3)]
+			EWinfo = line.split()
+			binNumber=EWinfo[0]
+			c1=float(EWinfo[1])
+			c2=float(EWinfo[2])
+			c3=float(EWinfo[3])
+			if len(EWinfo)==5:
+				EWunc=float(EWinfo[4])
+			else:
+				EWunc=0.
+			binDict[int(binNumber)].quadCoeff = [float(c1),float(c2),float(c3),float(EWunc)]
 
 class RootFileReader(object):
 	def __init__(self):
@@ -97,15 +106,27 @@ class SystWriter(object):
 		outputStr = ""
 		outputStr += "yt\tparam\t1.\t1.\t[0,10]\n"
 		#outputStr += "yt\tflatParam\n"
-		outputStr += binName+"Rate\trateParam\tSignal\tttsig\t({0}*(@0)^2{1}*(@0){2})*(({0}*(@0)^2{1}*(@0){2}-1)*{3}+1)^(@1)\tyt,weakCorr\n".format(
+#write the yukawa coupling quadratic bin rate formula
+		ytLine = binName+"Rate\trateParam\tSignal\tttsig\t({0}*(@0)^2{1}*(@0){2})".format(
+				quadCoeff[0],
+				"+"+str(quadCoeff[1]) if quadCoeff[1] > 0. else "-"+str(abs(quadCoeff[1])),
+				"+"+str(quadCoeff[2]) if quadCoeff[2] > 0. else "-"+str(abs(quadCoeff[2])),
+				)
+#optional EW uncertainty term
+		if quadCoeff[3]!=0.:
+			ytLine+="*(({0}*(@0)^2{1}*(@0){2}-1)*{3}+1)^(@1)\tyt,EWunc\n".format(
 				quadCoeff[0],
 				"+"+str(quadCoeff[1]) if quadCoeff[1] > 0. else "-"+str(abs(quadCoeff[1])),
 				"+"+str(quadCoeff[2]) if quadCoeff[2] > 0. else "-"+str(abs(quadCoeff[2])),
 				quadCoeff[3]
 				)
+		ytLine+=("\tyt" if quadCoeff[3]==0. else "\tyt,EWunc")
+		ytLine+="\n"
+		outputStr += ytLine
 		#outputStr += binName+"Rate\trateParam\tSignal\tttsig\t{0}*(@0)^2\tyt\n".format(quadCoeff[0])
 		outputStr += "\n"
-		outputStr += "weakCorr\tparam\t0.\t1.\t[-5.,5.]"
+		if quadCoeff[3]!=0.:
+			outputStr += "EWunc\tparam\t0.\t1.\t[-5.,5.]"
 		return outputStr
 
 class DataCard(object):
