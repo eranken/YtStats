@@ -5,7 +5,7 @@ rs_corr
 elrec_corr
 pdf0_16
 fsr_16
-hd_corr
+fsr_corr
 JES_RelativeFSR_16
 mutrg_16
 pdf_as_16
@@ -14,7 +14,6 @@ pu_corr
 pdf5_16
 JES_RelativeBal_16
 rsfs_corr
-tune_16
 JERup_16
 JES_PileupPtBB_corr
 met_16
@@ -44,7 +43,6 @@ mtop_16
 fs_corr
 JES_Fragmentation_corr
 JES_TimePtEta_16
-fsr_corr
 JES_FlavorQCD_corr
 JES_RelativeJEREC1_16
 prefire_16
