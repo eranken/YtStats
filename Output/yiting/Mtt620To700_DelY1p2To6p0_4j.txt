@@ -1,0 +1,71 @@
+
+*     number of categories
+*     number of samples minus one
+*     number of nuisance parameters
+-----------------------------------------------------------------------
+shapes * * Mtt620To700_DelY1p2To6p0_4j.root $CHANNEL/$PROCESS $CHANNEL/$PROCESS_$SYSTEMATIC
+---------------------------------------------------------------------------------
+
+bin	Signal	
+observation	11842
+---------------------------------------------------------------------------------
+bin	Signal	Signal	Signal	Signal	
+
+
+process	qcd	vj	st	ttsig	
+process	1	2	3	0	
+rate		154.453888196	108.737466998	361.663497287	10978.5681282	
+---------------------------------------------------------------------------------
+
+btag	shape	-	1	1	1	
+ltag	shape	-	1	1	1	
+JER	shape	-	-	-	1	
+pileup	shape	-	-	1	1	
+lep	shape	-	1	1	1	
+iso_4j	shape	1	-	-	-	
+hdamp	shape	-	-	-	1	
+fsr	shape	-	-	1	1	
+color	shape	-	-	-	1	
+bdecay	shape	-	-	1	1	
+bfrag	shape	-	-	1	1	
+mt1	shape	-	-	-	1	
+pdf1	shape	-	-	1	1	
+pdf2	shape	-	-	1	1	
+pdf3	shape	-	-	1	1	
+pdf4	shape	-	-	1	1	
+pdf5	shape	-	-	1	1	
+pdf6	shape	-	-	1	1	
+pdf7	shape	-	-	1	1	
+pdf8	shape	-	-	1	1	
+alpha	shape	-	-	1	1	
+rs	shape	-	1	1	1	
+fs	shape	-	1	1	1	
+rsfsSS	shape	-	1	1	1	
+rsfsOS	shape	-	1	1	1	
+pt	shape	-	-	-	1	
+JESAbsoluteScale	shape	-	-	1	1	
+JESAbsoluteMPFBias	shape	-	-	1	1	
+JESSinglePionHCAL	shape	-	-	1	1	
+JESRelativePtBB	shape	-	-	1	1	
+JESRelativePtEC1	shape	-	-	1	1	
+JESRelativeBal	shape	-	-	1	1	
+JESRelativeFSR	shape	-	-	1	1	
+JESPileUpDataMC	shape	-	-	1	1	
+JESPileUpPtEC1	shape	-	-	1	1	
+JESPileUpPtEC2	shape	-	-	1	1	
+JESFlavorQCD	shape	-	-	1	1	
+lumi	lnN	1.025	1.025	1.025	1.025	
+st_norm	lnN	-	-	1.15	-	
+vj_norm	lnN	-	1.3	-	-	
+qcd_norm4j	lnN	1.3	-	-	-	
+isr	lnN	-	-	-	1.02	
+MCStat_Mtt620To700_DelY1p2To6p0_qcd_4j	lnN	1.03751158246	-	-	-	
+MCStat_Mtt620To700_DelY1p2To6p0_vj_4j	lnN	-	1.08852177841	-	-	
+MCStat_Mtt620To700_DelY1p2To6p0_st_4j	lnN	-	-	1.01695797778	-	
+MCStat_Mtt620To700_DelY1p2To6p0_ttsig_4j	lnN	-	-	-	1.00407245177	
+Mtt620To700_DelY1p2To6p0gtRate	rateParam	Signal	ttsig	(-0.000376822029148*(@0)^2+1.34977017296e-05*(@0)+0.977722988724)*((-0.000376822029148*(@0)^2+1.34977017296e-05*(@0)+0.977722988724-1)*(0.0479306787873)+1)^(@1)	gt,weakCorr
+
+gt	param	1.	1.	[0,5]
+
+weakCorr	param	0.	1.	[-5,5]
+
