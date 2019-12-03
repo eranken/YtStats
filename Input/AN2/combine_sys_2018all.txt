@@ -34,7 +34,6 @@ JES_PileupDataMC_corr
 JES_PileupDataMC_18
 pu_18
 pdf2_corr
-mtop_18
 JES_SinglePionECAL_corr
 JES_AbsoluteStat_18
 JES_PileupPtRef_18

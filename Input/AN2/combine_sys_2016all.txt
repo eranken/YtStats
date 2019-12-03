@@ -40,7 +40,6 @@ JES_RelativeFSR_corr
 JES_RelativeBal_corr
 JES_AbsoluteStat_16
 mtop_corr
-mtop_16
 fs_corr
 JES_Fragmentation_corr
 JES_TimePtEta_16

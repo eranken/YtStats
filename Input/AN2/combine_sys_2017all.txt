@@ -2,7 +2,7 @@ JES_PileupDataMC_corr
 murec_17
 rs_corr
 JES_PileupPtEC1_17
-mtop_corr
+mutrg_17
 JES_RelativeFSR_17
 met_17
 bfrag_corr
@@ -31,14 +31,13 @@ JES_PileupDataMC_17
 ltag_17
 flatsys17
 elrec_17
-mutrg_17
 JES_PileupPtBB_17
 JES_SinglePionECAL_corr
 JERdown_17
 bdec_corr
 JES_RelativeFSR_corr
 JES_PileupPtRef_17
-mtop_17
+mtop_corr
 JES_TimePtEta_17
 fs_corr
 JES_Fragmentation_corr
