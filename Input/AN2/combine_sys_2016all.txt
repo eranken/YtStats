@@ -5,7 +5,6 @@ rs_corr
 elrec_corr
 pdf0_16
 fsr_16
-bfrag_16
 fsr_corr
 JES_RelativeFSR_16
 mutrg_16
@@ -15,10 +14,11 @@ pu_corr
 pdf5_16
 JES_RelativeBal_16
 rsfs_corr
-JERup_16
+flatsys_corr
 JES_PileupPtBB_corr
 met_16
 JES_AbsoluteMPFBias_corr
+flatsys_16
 murec_corr
 ltag_corr
 JES_AbsoluteScale_corr
@@ -29,7 +29,6 @@ pdf4_16
 pu_16
 JES_PileupDataMC_16
 pdf1_16
-flatsys16
 ltag_16
 JES_PileupDataMC_corr
 elrec_16
@@ -37,6 +36,7 @@ JES_PileupPtBB_16
 JES_SinglePionECAL_corr
 bdec_corr
 JES_RelativeFSR_corr
+JER_16
 JES_RelativeBal_corr
 JES_AbsoluteStat_16
 mtop_corr
