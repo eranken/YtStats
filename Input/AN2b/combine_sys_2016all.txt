@@ -13,6 +13,7 @@ pu_corr
 pdf5_16
 JES_RelativeBal_16
 rsfs_corr
+JERup_16
 flatsys_corr
 JES_PileupPtBB_corr
 elrec_corr
@@ -35,7 +36,6 @@ JES_PileupPtBB_16
 JES_SinglePionECAL_corr
 bdec_corr
 JES_RelativeFSR_corr
-JER_16
 JES_RelativeBal_corr
 JES_AbsoluteStat_16
 mtop_corr
