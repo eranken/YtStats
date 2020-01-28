@@ -1,6 +1,5 @@
 rs_corr
 JES_RelativeBal_18
-erd_18
 murec_18
 btag_18
 pdf_as_18
