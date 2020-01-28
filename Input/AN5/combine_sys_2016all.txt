@@ -26,7 +26,6 @@ JES_PileupPtRef_corr
 isr_16
 isr_corr
 pdf4_16
-pu_16
 JES_PileupDataMC_16
 pdf1_16
 ltag_16

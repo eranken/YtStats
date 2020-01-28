@@ -32,7 +32,6 @@ elrec_18
 ltag_18
 JES_PileupDataMC_corr
 JES_PileupDataMC_18
-pu_18
 pdf2_corr
 JES_SinglePionECAL_corr
 JES_AbsoluteStat_18

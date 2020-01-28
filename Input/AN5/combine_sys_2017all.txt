@@ -28,7 +28,6 @@ pdf3_corr
 JES_FlavorQCD_corr
 isr_corr
 JES_PileupPtEC1_corr
-pu_17
 JES_PileupDataMC_17
 ltag_17
 elrec_17
