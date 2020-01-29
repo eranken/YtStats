@@ -1,0 +1,77 @@
+
+*     number of categories
+*     number of samples minus one
+*     number of nuisance parameters
+-----------------------------------------------------------------------
+shapes * * bin5_2017all.root $CHANNEL/$PROCESS $CHANNEL/$PROCESS_$SYSTEMATIC
+---------------------------------------------------------------------------------
+
+bin	Signal	
+observation	10998.0
+---------------------------------------------------------------------------------
+bin	Signal	Signal	Signal	
+
+
+process	vj	ttsig	st	
+process	1	0	3	
+rate		200.888254939	10571.6070455	225.727400782	
+---------------------------------------------------------------------------------
+
+lumi_corr	lnN	1.0137	1.0137	1.0137	
+lumi_17	lnN	1.019228	1.019228	1.019228	
+vj_norm	lnN	1.15	-	-	
+tt_norm	lnN	-	1.05	-	
+st_norm	lnN	-	-	1.15	
+JES_PileupDataMC_corr	shape	-	1	-	
+murec_17	shape	-	1	-	
+rs_corr	shape	-	1	-	
+JES_PileupPtEC1_17	shape	-	1	-	
+fsr_corr	shape	-	1	-	
+JES_RelativeFSR_17	shape	-	1	-	
+bfrag_corr	shape	-	1	-	
+pu_corr	shape	-	1	-	
+pdf0_corr	shape	-	1	-	
+JES_RelativeBal_17	shape	-	1	-	
+rsfs_corr	shape	-	1	-	
+flatsys_corr	shape	-	1	-	
+JES_RelativePtEC1_17	shape	-	1	-	
+JES_PileupPtBB_corr	shape	-	1	-	
+pdf1_corr	shape	-	1	-	
+elrec_corr	shape	-	1	-	
+JES_AbsoluteMPFBias_corr	shape	-	1	-	
+pdf_as_17	shape	-	1	-	
+eltrg_17	shape	-	1	-	
+flatsys_17	shape	-	1	-	
+murec_corr	shape	-	1	-	
+ltag_corr	shape	-	1	-	
+JES_SinglePionHCAL_corr	shape	-	1	-	
+JES_AbsoluteScale_corr	shape	-	1	-	
+pdf2_corr	shape	-	1	-	
+JES_PileupPtRef_corr	shape	-	1	-	
+pdf3_corr	shape	-	1	-	
+JES_FlavorQCD_corr	shape	-	1	-	
+isr_corr	shape	-	1	-	
+JES_PileupPtEC1_corr	shape	-	1	-	
+JES_PileupDataMC_17	shape	-	1	-	
+ltag_17	shape	-	1	-	
+elrec_17	shape	-	1	-	
+JES_PileupPtBB_17	shape	-	1	-	
+JES_SinglePionECAL_corr	shape	-	1	-	
+bdec_corr	shape	-	1	-	
+JES_RelativeFSR_corr	shape	-	1	-	
+JER_17	shape	-	1	-	
+JES_PileupPtRef_17	shape	-	1	-	
+JES_RelativeBal_corr	shape	-	1	-	
+mtop_corr	shape	-	1	-	
+JES_TimePtEta_17	shape	-	1	-	
+fs_corr	shape	-	1	-	
+JES_Fragmentation_corr	shape	-	1	-	
+btag_corr	shape	-	1	-	
+pdf4_corr	shape	-	1	-	
+prefire_17	shape	-	1	-	
+JES_RelativeSample_17	shape	-	1	-	
+btag_17	shape	-	1	-	
+yt	param	1.	2.	[-10,10]
+bin5_2017allRate	rateParam	Signal	ttsig	(0.00708956097517*(@0)^2+1.71238898318e-05*(@0)+0.974699556536)*((0.00708956097517*(@0)^2+1.71238898318e-05*(@0)+0.974699556536-1)*0.335974772764+1)^(@1)	yt,EWunc
+
+EWunc	param	0.	1.	[-5.,5.]
