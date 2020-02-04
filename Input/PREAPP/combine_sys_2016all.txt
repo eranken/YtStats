@@ -12,14 +12,14 @@ pu_corr
 pdf5_16
 JES_RelativeBal_16
 rsfs_corr
-flatsys_corr
 JES_PileupPtBB_corr
+flat_16
 elrec_corr
 JES_AbsoluteMPFBias_corr
 eltrg_16
-flatsys_16
 murec_corr
 ltag_corr
+flat_corr
 JES_AbsoluteScale_corr
 JES_PileupPtRef_corr
 isr_16

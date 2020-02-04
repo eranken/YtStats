@@ -1,3 +1,4 @@
+flat_corr
 rs_corr
 JES_RelativeBal_18
 murec_18
@@ -11,7 +12,6 @@ pu_corr
 pdf0_corr
 rsfs_corr
 JES_RelativeFSR_corr
-flatsys_corr
 JES_PileupPtBB_corr
 pdf1_corr
 elrec_corr
@@ -19,7 +19,6 @@ JES_AbsoluteMPFBias_corr
 JES_SinglePionHCAL_corr
 murec_corr
 ltag_corr
-flatsys_18
 eltrg_18
 JES_AbsoluteScale_corr
 JES_PileupPtRef_corr
@@ -37,6 +36,7 @@ JES_AbsoluteStat_18
 JES_PileupPtRef_18
 bdec_corr
 JER_18
+flat_18
 JES_RelativeBal_corr
 mtop_corr
 JES_PileupPtBB_18

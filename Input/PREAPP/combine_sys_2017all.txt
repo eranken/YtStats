@@ -9,7 +9,6 @@ pu_corr
 pdf0_corr
 JES_RelativeBal_17
 rsfs_corr
-flatsys_corr
 JES_RelativePtEC1_17
 JES_PileupPtBB_corr
 pdf1_corr
@@ -17,10 +16,10 @@ elrec_corr
 JES_AbsoluteMPFBias_corr
 pdf_as_17
 eltrg_17
-flatsys_17
 murec_corr
 ltag_corr
 JES_SinglePionHCAL_corr
+flat_17
 JES_AbsoluteScale_corr
 pdf2_corr
 JES_PileupPtRef_corr
@@ -29,6 +28,7 @@ JES_FlavorQCD_corr
 isr_corr
 JES_PileupPtEC1_corr
 JES_PileupDataMC_17
+flat_corr
 ltag_17
 elrec_17
 JES_PileupPtBB_17
