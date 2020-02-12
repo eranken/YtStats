@@ -31,6 +31,7 @@ JES_PileupDataMC_17
 flat_corr
 ltag_17
 elrec_17
+mutrg_17
 JES_PileupPtBB_17
 JES_SinglePionECAL_corr
 bdec_corr

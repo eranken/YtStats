@@ -7,6 +7,7 @@ fsr_16
 fsr_corr
 JES_RelativeFSR_16
 pu_corr
+mutrg_16
 pdf_as_16
 bfrag_corr
 JES_RelativePtBB_corr
