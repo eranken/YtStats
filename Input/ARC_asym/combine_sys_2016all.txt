@@ -46,6 +46,5 @@ JES_FlavorQCD_corr
 JES_RelativeJEREC1_16
 prefire_16
 JES_RelativeSample_16
-mtop3_16
 btag_corr
 btag_16
