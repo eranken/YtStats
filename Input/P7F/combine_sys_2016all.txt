@@ -1,6 +1,6 @@
 pdf2_16
 murec_16
-JES_RelativeBal_corr
+pu
 JES_RelativeFSR_16
 pdf0_16
 JES_AbsoluteScale
@@ -32,7 +32,6 @@ bdec
 JES_PileupPtRef_16
 JES_PileupDataMC_16
 pdf1_16
-pu
 ltag_16
 JES_PileupDataMC_corr
 elrec_16
@@ -40,7 +39,7 @@ JES_RelativePtBB_16
 JES_PileupPtBB_16
 JES_RelativeFSR_corr
 JER_16
-nnlo
+JES_RelativeBal_corr
 rsfs
 JES_AbsoluteStat_16
 fsr_corr

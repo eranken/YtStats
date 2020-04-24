@@ -22,7 +22,7 @@ eltrg_17
 murec_corr
 ltag_corr
 flat_17
-JES_RelativeBal_corr
+JES_TimePtEta_17
 JES_Fragmentation
 JES_PileupPtRef_corr
 pdf3_corr
@@ -39,10 +39,9 @@ JES_PileupPtBB_17
 JES_RelativeFSR_corr
 JER_17
 JES_PileupPtRef_17
-nnlo
+JES_RelativeBal_corr
 rsfs
 fsr_corr
-JES_TimePtEta_17
 JES_SinglePionECAL
 btag_corr
 pdf4_corr
