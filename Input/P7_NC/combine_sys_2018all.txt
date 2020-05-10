@@ -11,7 +11,6 @@ JES_PileupPtEC1_18
 bfrag_18
 JES_AbsoluteMPFBias_18
 mutrg_18
-nnlo_18
 JES_RelativeBal_18
 isr_18
 pu_18

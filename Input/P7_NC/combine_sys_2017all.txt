@@ -10,7 +10,6 @@ JES_PileupPtEC1_17
 JES_RelativeFSR_17
 fs_17
 JES_RelativeBal_17
-nnlo_17
 JES_RelativePtEC1_17
 isr_17
 mutrg_17

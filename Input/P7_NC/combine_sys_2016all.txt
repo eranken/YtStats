@@ -9,7 +9,6 @@ JES_RelativeFSR_16
 fs_16
 pdf5_16
 JES_RelativeBal_16
-nnlo_16
 pdf_as_16
 pu_16
 flat_16
