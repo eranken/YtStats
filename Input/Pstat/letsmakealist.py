@@ -23,3 +23,8 @@ syslist = list(dict.fromkeys(syslist))
 
 print syslist
 print len(syslist)
+
+print ' '
+
+for sys in syslist:
+	print sys+','
