@@ -24,16 +24,17 @@ shortyear = year[2:]
 lumicorr = .0137
 lumiunc = .0209
 if shortyear == '17':
+	lumiunc *- .23/.25
 	lumiunc *= .23/.25
 lumicorr+=1.
 lumiunc+=1.
 
+lumiunc=1.001
 
 process = [
 		"vj",
 		"ttsig",
 		"st",
-		"VV"
 		]
 
 #if int(year) >= 2017:
@@ -43,12 +44,11 @@ systematics = [
 		#lnNSystematic("flat"	,["ttsig"]	,[1.03]),
 		#lnNSystematic("hd"	,["ttsig"]	,[1.0152]),
 		#lnNSystematic("tune"	,["ttsig"]	,[1.0074]),
-		lnNSystematic("lumi_corr"	,["ttsig","vj","st","VV"]	,[lumicorr,lumicorr,lumicorr,lumicorr]),
-		lnNSystematic("lumi_"+shortyear	,["ttsig","vj","st","VV"]	,[lumiunc,lumiunc,lumiunc,lumiunc]),
-		lnNSystematic("vj_norm"	,["vj"]	,[1.3]),
-		lnNSystematic("tt_norm"	,["ttsig"]	,[1.05]),
-		lnNSystematic("st_norm"	,["st"]	,[1.15]),
-		lnNSystematic("vv_norm"	,["VV"]	,[1.3])
+		#lnNSystematic("lumi_corr"	,["ttsig","vj","st"]	,[lumicorr,lumicorr,lumicorr]),
+		lnNSystematic("lumi_"+shortyear	,["ttsig","vj","st"]	,[lumiunc,lumiunc,lumiunc]),
+		#lnNSystematic("vj_norm"	,["vj"]	,[1.15]),
+		#lnNSystematic("tt_norm"	,["ttsig"]	,[1.1,1.1]),
+		#lnNSystematic("st_norm"	,["st"]	,[1.15])
 		#lnNSystematic("ltag"	,["ttsig"]	,[1.0015]),
 		#lnNSystematic("isr"	,["ttsig"]	,[1.00145],),
 		#ShapeSystematic("flat_shape"	,["ttsig"]),
@@ -84,7 +84,7 @@ systematics = [
 
 for sys in syslist:
 	print sys
-	systematics.append(ShapeSystematic(sys,["ttsig"]))
+	#systematics.append(ShapeSystematic(sys,["ttsig"]))
 
 rootFileReader = RootFileReader()
 rootFileReader.readFile(inDir+'combine_'+year+chan+'.root')

@@ -9,14 +9,16 @@ parser.add_argument('--t',action='store', type=str, default = "-1")
 parser.add_argument('--freeze',action='store', type=str, default = "r")
 parser.add_argument('--set',action='store', type=str, default = "r=1")
 parser.add_argument('--poi',action='store', type=str, default = "yt")
+parser.add_argument('--opt',action='store', type=str, default="")
+
 
 args = parser.parse_args()
 
-command1= 'combineTool.py -M Impacts -d card.root -m 125 --redefineSignalPOIs '+args.poi+' --freezeParameters '+args.freeze+' --setParameters '+args.set+' --doInitialFit --robustFit 1 -t '+args.t
+command1= 'combineTool.py -M Impacts -d card.root -m 125 --redefineSignalPOIs '+args.poi+' --freezeParameters '+args.freeze+' --setParameters '+args.set+' --doInitialFit --robustFit 1 '+args.opt
 print "1st Step: ", command1
 os.system(command1)
 
-command2= 'combineTool.py -M Impacts -d card.root -m 125 --redefineSignalPOIs '+args.poi+' --freezeParameters '+args.freeze+' --setParameters '+args.set+' --doFits --parallel 24 --robustFit 1 -t '+args.t+' --cminPreScan'
+command2= 'combineTool.py -M Impacts -d card.root -m 125 --redefineSignalPOIs '+args.poi+' --freezeParameters '+args.freeze+' --setParameters '+args.set+' --doFits --parallel 24 --robustFit 1 --cminPreScan '+args.opt
 print "2nd Step: ", command2
 os.system(command2)
 

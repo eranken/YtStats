@@ -3,9 +3,10 @@ import ROOT
 from Systematic import *
 
 class Process(object):
-	def __init__(self,name,count):
+	def __init__(self,name,count,unc=0):
 		self.name = name
 		self.count = count
+		self.unc = unc
 
 class AnalysisBin(object):
 	def __init__(self,binNumber):
@@ -24,6 +25,7 @@ class TextFileReader(object):
 			c1=float(EWinfo[1])
 			c2=float(EWinfo[2])
 			c3=float(EWinfo[3])
+			
 			if len(EWinfo)==5:
 				EWunc=float(EWinfo[4])
 			else:
@@ -48,19 +50,19 @@ class RootFileReader(object):
 		for ibin in range(1,nBins+1):
 			binDict[ibin] = AnalysisBin(ibin)
 		for ibin,anaBin in binDict.iteritems():
-			processObj = Process("data",dataHist.GetBinContent(ibin))
+			processObj = Process("data",1.00*dataHist.GetBinContent(ibin),dataHist.GetBinError(ibin))
 			anaBin.data = processObj
 			for eachprocess in process:
 				hist = self.inputFile.Get(eachprocess)
-				processObj = Process(eachprocess,hist.GetBinContent(ibin))
+				processObj = Process(eachprocess,1.00*hist.GetBinContent(ibin),hist.GetBinError(ibin))
 				anaBin.processList.append(processObj)
 			for systematic in systematics:
 				if systematic.systType == "shape":
 					systematic.nBins = nBins
 					for vary in ["Up","Down"]:
 						hist = self.inputFile.Get(systematic.name+vary)
-						systematic.binContent.update({str(ibin)+vary : hist.GetBinContent(ibin)})
-						print str(ibin)+": "+str(vary)+": "+str(hist.GetBinContent(ibin))+" attributes:  "+str(systematic.name)+str(systematic.process)
+						systematic.binContent.update({str(ibin)+vary : 1.00*hist.GetBinContent(ibin)})
+						print str(ibin)+": "+str(vary)+": "+str(1.00*hist.GetBinContent(ibin))+" attributes:  "+str(systematic.name)+str(systematic.process)
 				anaBin.systList.append(systematic)
 		return binDict
 
@@ -104,7 +106,7 @@ class SystWriter(object):
 
 	def writeYukawa(self,binName,quadCoeff):
 		outputStr = ""
-		outputStr += "yt\tparam\t1.\t1.\t[0,10]\n"
+		outputStr += "yt\tparam\t1.\t1.\t[-10,10]\n"
 		#outputStr += "yt\tflatParam\n"
 #write the yukawa coupling quadratic bin rate formula
 		ytLine = binName+"Rate\trateParam\tSignal\tttsig\t({0}*(@0)^2{1}*(@0){2})".format(
@@ -113,20 +115,33 @@ class SystWriter(object):
 				"+"+str(quadCoeff[2]) if quadCoeff[2] > 0. else "-"+str(abs(quadCoeff[2])),
 				)
 #optional EW uncertainty term
-		if quadCoeff[3]!=0.:
-			ytLine+="*(({0}*(@0)^2{1}*(@0){2}-1)*{3}+1)^(@1)\tyt,EWunc\n".format(
+		if quadCoeff[3]!=0. and quadCoeff[0]>0.:
+			ytLine+="*(({0}*(@0)^2{1}*(@0){2}-1)*{3}+1)^(@1)".format(
 				quadCoeff[0],
 				"+"+str(quadCoeff[1]) if quadCoeff[1] > 0. else "-"+str(abs(quadCoeff[1])),
 				"+"+str(quadCoeff[2]) if quadCoeff[2] > 0. else "-"+str(abs(quadCoeff[2])),
 				quadCoeff[3]
 				)
-		ytLine+=("\tyt" if quadCoeff[3]==0. else "\tyt,EWunc")
+		#EWsplit = ("EWuncB" if quadCoeff[0]<0. else "EWunc")
+		EWsplit = "EWunc"
+		ytLine+=("\tyt" if quadCoeff[3]==0. else "\tyt,"+EWsplit)
 		ytLine+="\n"
 		outputStr += ytLine
 		#outputStr += binName+"Rate\trateParam\tSignal\tttsig\t{0}*(@0)^2\tyt\n".format(quadCoeff[0])
 		outputStr += "\n"
-		if quadCoeff[3]!=0.:
-			outputStr += "EWunc\tparam\t0.\t1.\t[-5.,5.]"
+		#outputStr += "EWunc\tparam\t0.\t1.\t[-5.,5.]"
+		outputStr += "EWunc\tparam\t0.\t1.\t[-5.,5.]"
+        	#if quadCoeff[0]>0.:
+		#	outputStr += "EWunc\tparam\t0.\t1.\t[-5.,5.]"
+		#if quadCoeff[0]<0.:
+		#	outputStr += "EWuncB\tparam\t0.\t1.\t[-5.,5.]"
+		outputStr += "\n"
+		#outputStr +="* autoMCStats 1 1 0"
+		return outputStr
+
+	def writeGroups(self,binName):
+		outputStr = ""
+		outputStr = "allsys = "
 		return outputStr
 
 class DataCard(object):
@@ -168,7 +183,7 @@ class DataCard(object):
 
 	def makeCard(self,outputDir,year,chan):
 		outputStr = ""
-		binName = "bin"+str(self.analysisBin.binNumber)+"_"+year+chan
+		binName = "bin"+year+"_"+str(self.analysisBin.binNumber)
 
 		outputStr = self.makeHeader(outputDir+binName+".root")
 		outputStr += self.binNameObservation+"\n"
@@ -200,7 +215,7 @@ class DataCard(object):
 
 	def makeRootFile(self,outputDir,year,chan):
 		iBin =self.analysisBin.binNumber
-		binName = "bin"+str(self.analysisBin.binNumber)+"_"+year+chan
+		binName = "bin"+year+"_"+str(self.analysisBin.binNumber)
 		outputFile = ROOT.TFile(outputDir+binName+".root","RECREATE")
 
 		outputFile.mkdir("Signal")
@@ -213,6 +228,7 @@ class DataCard(object):
 		for process in self.analysisBin.processList:
 			processHist = ROOT.TH1D(process.name,"",1,-0.5,0.5)
 			processHist.SetBinContent(1,process.count)
+			processHist.SetBinError(1,process.unc)
 			processHist.Write()
 
 		for systematic in self.analysisBin.systList:

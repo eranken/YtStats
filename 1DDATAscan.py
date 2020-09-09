@@ -39,7 +39,6 @@ if args.P !='yt':
 	mystr+=',yt'
 mystr += ' --freezeParameters r,'+args.freeze
 mystr += ' --setParameters r=1,'+args.set
-mystr += ' -t '+args.t
 mystr += ' -P '+args.P
 mystr += ' --setParameterRanges yt='+ytmin+','+ytmax
 if args.P !='yt':
