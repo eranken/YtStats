@@ -1,0 +1,78 @@
+
+*     number of categories
+*     number of samples minus one
+*     number of nuisance parameters
+-----------------------------------------------------------------------
+shapes * * bin2018_9.root $CHANNEL/$PROCESS $CHANNEL/$PROCESS_$SYSTEMATIC
+---------------------------------------------------------------------------------
+
+bin	Signal	
+observation	11076.229
+---------------------------------------------------------------------------------
+bin	Signal	Signal	Signal	Signal	
+
+
+process	vj	ttsig	st	VV	
+process	1	0	3	4	
+rate		59.5205858326	11991.549743	204.578458023	5.38686528501	
+---------------------------------------------------------------------------------
+
+lumi_corr	lnN	1.0137	1.0137	1.0137	1.0137	
+lumi_18	lnN	1.0209	1.0209	1.0209	1.0209	
+vj_norm	lnN	1.3	-	-	-	
+tt_norm	lnN	-	1.05	-	-	
+st_norm	lnN	-	-	1.15	-	
+vv_norm	lnN	-	-	-	1.3	
+pu	shape	-	1	-	-	
+JES_RelativeBal_18	shape	-	1	-	-	
+murec_18	shape	-	1	-	-	
+JES_AbsoluteScale	shape	-	1	-	-	
+JES_FlavorQCD	shape	-	1	-	-	
+fs	shape	-	1	-	-	
+mtop	shape	-	1	-	-	
+JES_RelativeFSR_18	shape	-	1	-	-	
+JES_PileupPtEC1_18	shape	-	1	-	-	
+mutrg_18	shape	-	1	-	-	
+pdf0_corr	shape	-	1	-	-	
+rs	shape	-	1	-	-	
+isr_corr	shape	-	1	-	-	
+JES_PileupPtBB_corr	shape	-	1	-	-	
+pdf1_corr	shape	-	1	-	-	
+elrec_corr	shape	-	1	-	-	
+JES_AbsoluteMPFBias	shape	-	1	-	-	
+murec_corr	shape	-	1	-	-	
+ltag_corr	shape	-	1	-	-	
+eltrg_18	shape	-	1	-	-	
+JES_RelativeFSR_corr	shape	-	1	-	-	
+JES_Fragmentation	shape	-	1	-	-	
+JES_PileupPtRef_corr	shape	-	1	-	-	
+pdf3_corr	shape	-	1	-	-	
+bfrag	shape	-	1	-	-	
+JES_PileupPtEC1_corr	shape	-	1	-	-	
+JES_SinglePionHCAL	shape	-	1	-	-	
+bdec	shape	-	1	-	-	
+flat_corr	shape	-	1	-	-	
+elrec_18	shape	-	1	-	-	
+ltag_18	shape	-	1	-	-	
+JES_PileupDataMC_corr	shape	-	1	-	-	
+JES_PileupDataMC_18	shape	-	1	-	-	
+pdf2_corr	shape	-	1	-	-	
+JES_AbsoluteStat_18	shape	-	1	-	-	
+JES_PileupPtRef_18	shape	-	1	-	-	
+JER_18	shape	-	1	-	-	
+flat_18	shape	-	1	-	-	
+JES_RelativeBal_corr	shape	-	1	-	-	
+rsfs	shape	-	1	-	-	
+pdf_as_18	shape	-	1	-	-	
+fsr_corr	shape	-	1	-	-	
+JES_PileupPtBB_18	shape	-	1	-	-	
+btag_18	shape	-	1	-	-	
+JES_SinglePionECAL	shape	-	1	-	-	
+JES_RelativeSample_18	shape	-	1	-	-	
+pdf4_corr	shape	-	1	-	-	
+JES_TimePtEta_18	shape	-	1	-	-	
+btag_corr	shape	-	1	-	-	
+yt	param	1.	1.	[-10,10]
+bin2018_9Rate	rateParam	Signal	ttsig	(-0.00333133638742*(@0)^2+1.9504961502e-05*(@0)+0.973233398468)	yt
+
+EWunc	param	0.	1.	[-5.,5.]
