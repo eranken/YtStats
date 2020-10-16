@@ -240,13 +240,13 @@ for page in xrange(n):
 		asipnumfound =False
 		while not asipnumfound:
 			asipnum +=1
-			print asipdata[asipnum]["name"],thisname
+			print asipdata[asipnum]["name"],thisname, asipdata[asipnum]["name"]==thisname
 			if asipnum >= len(asipdata)-1:
 				print "oh shit", thisname,asipnum
 				break
 	       	if asipdata[asipnum]["name"]==thisname:
 	 			asipnumfound = True
-				print "found it", asipnum
+				print "found it!!!!!!!!!!!!!!!!!!!!", asipnum
 		pre = pdata[p]['prefit']
 		fit = pdata[p]['fit']
 		preA = asipdata[asipnum]['prefit']
