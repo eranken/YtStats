@@ -450,10 +450,10 @@ for page in xrange(n):
 	method = 'default'
 	if 'method' in data and data['method'] in lo_color:
 		method = data['method']
-	g_impacts_hiA.SetFillColor(plot.CreateTransparentColor(hi_color[method], alpha))
+	g_impactsA_hi.SetFillColor(plot.CreateTransparentColor(hi_color[method], alpha))
 	g_impacts_hi.SetLineWidth(0)
 	g_impacts_lo.SetLineWidth(0)
-	g_impacts_loA.SetFillColor(plot.CreateTransparentColor(lo_color[method], alpha))
+	g_impactsA_lo.SetFillColor(plot.CreateTransparentColor(lo_color[method], alpha))
 	g_impactsA_hi.SetFillColor(ROOT.kBlack)
 	g_impactsA_hi.SetLineWidth(1)
 	g_impactsA_hi.SetLineStyle(1)
