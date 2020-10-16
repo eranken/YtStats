@@ -451,17 +451,16 @@ for page in xrange(n):
 	if 'method' in data and data['method'] in lo_color:
 		method = data['method']
 	g_impactsA_hi.SetFillColor(plot.CreateTransparentColor(hi_color[method], alpha))
-	g_impacts_hi.SetLineWidth(0)
-	g_impacts_lo.SetLineWidth(0)
+	g_impactsA_hi.SetLineWidth(0)
+	g_impactsA_lo.SetLineWidth(0)
 	g_impactsA_lo.SetFillColor(plot.CreateTransparentColor(lo_color[method], alpha))
-	g_impactsA_hi.SetFillColor(ROOT.kBlack)
-	g_impactsA_hi.SetLineWidth(1)
-	g_impactsA_hi.SetLineStyle(1)
+	g_impacts_hi.SetLineWidth(2)
+	g_impacts_hi.SetLineStyle(1)
 	g_impactsA_hi.SetMarkerSize(0)
 	#g_impactsA_hi.SetLineColor(plot.CreateTransparentColor(hi_color[method], 1))
 	# g_impactsA_hi.SetLineColor(ROOT.kRed+1)
 	g_impacts_hi.SetLineColor(hi_color[method])
-	g_impactsA_hi.SetFillStyle(1)
+	# g_impactsA_hi.SetFillStyle(1)
 
 
 	g_impactsA_lo.SetFillColor(ROOT.kBlack)
@@ -470,7 +469,7 @@ for page in xrange(n):
 	g_impactsA_lo.SetLineStyle(1)
 	g_impactsA_lo.SetLineWidth(1)
 	g_impactsA_lo.SetMarkerSize(0)
-	g_impactsA_lo.SetFillStyle(1)
+	# g_impactsA_lo.SetFillStyle(1)
 
 	g_impactsA_hi.Draw('2 SAME')
 	g_impactsA_lo.Draw('2 SAME')
