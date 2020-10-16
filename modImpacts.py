@@ -407,6 +407,7 @@ for page in xrange(n):
 
 	# Back to the first pad to draw the pulls graph
 	pads[0].cd()
+	alpha = 0.7
 
 	lo_color = {
 		'default': 38,
