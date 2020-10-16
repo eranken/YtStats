@@ -322,20 +322,20 @@ for page in xrange(n):
 		col = colors.get(tp, 2)
 		if args.color_groups is not None and len(pdata[p]['groups']) == 1:
 			col = color_groups.get(pdata[p]['groups'][0], 1)
-	if impA[2]-impA[1]>0:
+		if impA[2]-impA[1]>0:
 			g_impactsA_hi.SetPointError(i, 0, impA[2] - impA[1], 0.0, 0.0)
 			g_impactsA_lo.SetPointError(i, impA[1] - impA[0], 0, 0.0, 0.0)
-	else:
+		else:
 			g_impactsA_hi.SetPointError(i,  impA[1] - impA[2],0, 0.0, 0.0)
 			g_impactsA_lo.SetPointError(i, 0, impA[0] - impA[1],  0.0, 0.0)
 
-	thisname = Translate(thisname,translate)
-	thisname = thisname.replace('_16',' (2016)')
-	thisname = thisname.replace('_17',' (2017)')
-	thisname = thisname.replace('_18',' (2018)')
-	thisname = thisname.replace('flatsys','flat')
-	thisname = thisname.replace('_corr',' (correlated)')
-	h_pulls.GetYaxis().SetBinLabel(i + 1, ('#color[%i]{%s}'% (col, thisname)))
+		thisname = Translate(thisname,translate)
+		thisname = thisname.replace('_16',' (2016)')
+		thisname = thisname.replace('_17',' (2017)')
+		thisname = thisname.replace('_18',' (2018)')
+		thisname = thisname.replace('flatsys','flat')
+		thisname = thisname.replace('_corr',' (correlated)')
+		h_pulls.GetYaxis().SetBinLabel(i + 1, ('#color[%i]{%s}'% (col, thisname)))
 	# h_pulls.GetYaxis().SetLabelSize(0.5)
 	# Style and draw the pulls histo
 	if externalPullDef:
