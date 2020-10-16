@@ -326,11 +326,11 @@ for page in xrange(n):
 		if args.color_groups is not None and len(pdata[p]['groups']) == 1:
 			col = color_groups.get(pdata[p]['groups'][0], 1)
 		if impA[2]-impA[1]>0:
-			g_impactsA_hi.SetPointError(i, 0, impA[2] - impA[1], 0.0, 0.0)
-			g_impactsA_lo.SetPointError(i, impA[1] - impA[0], 0, 0.0, 0.0)
+			g_impactsA_hi.SetPointError(i, 0, impA[2] - impA[1], 0.49, 0.49)
+			g_impactsA_lo.SetPointError(i, impA[1] - impA[0], 0, 0.49, 0.49)
 		else:
-			g_impactsA_hi.SetPointError(i,  impA[1] - impA[2],0, 0.0, 0.0)
-			g_impactsA_lo.SetPointError(i, 0, impA[0] - impA[1],  0.0, 0.0)
+			g_impactsA_hi.SetPointError(i,  impA[1] - impA[2],0, 0.49, 0.49)
+			g_impactsA_lo.SetPointError(i, 0, impA[0] - impA[1],  0.49, 0.49)
 
 		thisname = Translate(thisname,translate)
 		thisname = thisname.replace('_16',' (2016)')
