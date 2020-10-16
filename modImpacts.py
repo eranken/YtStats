@@ -408,12 +408,12 @@ for page in xrange(n):
 	# Back to the first pad to draw the pulls graph
 	pads[0].cd()
 	plot.Set(g_pulls, MarkerSize=0.8, LineWidth=2)
-	plot.Set(g_pullsA, MarkerSize=0.8, LineWidth=2)
+	# plot.Set(g_pullsA, MarkerSize=0.8, LineWidth=2)
 	g_pulls.Draw('PSAME')
 	# g_pullsA.SetFillColor(plot.CreateTransparentColor(ROOT.kBlack, .3))
 	# g_pullsA.SetFillColor(ROOT.kRed)
 	g_pullsA.SetFillStyle(1)
-	g_pullsA.SetFillColor(plot.CreateTransparentColor(ROOT.kBlack, 0.3))
+	g_pullsA.SetFillColor(plot.CreateTransparentColor(ROOT.kRed, 0.5))
 	g_pullsA.Draw('2SAME')
 
 	# And back to the second pad to draw the impacts graphs
