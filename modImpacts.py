@@ -408,19 +408,19 @@ for page in xrange(n):
 	# Back to the first pad to draw the pulls graph
 	pads[0].cd()
 
-		lo_color = {
-			'default': 38,
-			'hesse': ROOT.kOrange - 3,
-			'robust': ROOT.kGreen + 1
-		}
-		hi_color = {
-			'default': 46,
-			'hesse': ROOT.kBlue,
-			'robust': ROOT.kAzure - 5
-		}
-		method = 'default'
-		if 'method' in data and data['method'] in lo_color:
-			method = data['method']
+	lo_color = {
+		'default': 38,
+		'hesse': ROOT.kOrange - 3,
+		'robust': ROOT.kGreen + 1
+	}
+	hi_color = {
+		'default': 46,
+		'hesse': ROOT.kBlue,
+		'robust': ROOT.kAzure - 5
+	}
+	method = 'default'
+	if 'method' in data and data['method'] in lo_color:
+		method = data['method']
 
 	plot.Set(g_pulls, MarkerSize=0.8, LineWidth=2)
 	# plot.Set(g_pullsA, MarkerSize=0.8, LineWidth=2)
