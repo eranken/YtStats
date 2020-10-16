@@ -240,6 +240,7 @@ for page in xrange(n):
 		asipnumfound =False
 		while not asipnumfound:
 			asipnum +=1
+			print asipdata[asipnum]["name"],thisname
 			if asipnum >= len(asipdata)-1:
 				print "oh shit", thisname,asipnum
 				break
