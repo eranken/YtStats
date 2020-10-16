@@ -411,7 +411,9 @@ for page in xrange(n):
 	plot.Set(g_pullsA, MarkerSize=0.8, LineWidth=2)
 	g_pulls.Draw('PSAME')
 	# g_pullsA.SetFillColor(plot.CreateTransparentColor(ROOT.kBlack, .3))
-	g_pullsA.Draw('PSAME')
+	g_pullsA.SetFillColor(ROOT.kRed)
+	g_pullsA.SetFillStyle(1)
+	g_pullsA.Draw('2 SAME')
 
 	# And back to the second pad to draw the impacts graphs
 	pads[1].cd()
