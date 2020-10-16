@@ -35,30 +35,7 @@ if args.pullDef is not None:
 
 
 def Translate(name, ndict):
-#	if name not in ndict:
-#		return namei
-	mainname = name
-	nameend = ''
-	if name.endswith('_corr'):
-		mainname = name[:-5]
-		nameend = name[-5:]
-		print name,mainname,nameend
-	if '_1' in name:
-		mainname = name[:-3]
-		nameend=name[-3:]
-		print name,mainname,nameend
-	if name.startswith('JES'):
-		JESnames = name.split('_')
-		JESname=JESnames[1]
-		mainname = 'Jet energy #font[12]{'+JESname+'}'
-	if name.startswith('pdf') and '_as' not in name:
-		pdfnames = name.split('_')
-		pdfnum = pdfnames[0][3:]
-		mainname = 'NNPDF variation '+pdfnum
-	if mainname in ndict:
-		mainname = ndict[mainname]
-	return mainname+nameend
-#    return ndict[name] if name in ndict else name
+    return ndict[name] if name in ndict else name
 
 
 def GetRounded(nom, e_hi, e_lo):
@@ -73,32 +50,10 @@ def GetRounded(nom, e_hi, e_lo):
     return (s_nom, s_hi, s_lo)
 
 # Dictionary to translate parameter names
-translate = {'fs':'ME factorization scale',
-'bfrag':'b fragmentation',
-'tune':'UE tune',
-'rs':'ME renormalization scale',
-'pu':'Pileup',
-'murec':'Muon reconstruction efficiency',
-'mutrg':'Muon Trigger Efficiency',
-'elrec':'Electron reconstuction efficiency',
-'eltrg':'Electron trigger efficiency',
-'mtop':'Top quark mass',
-'hd':'MC hdamp',
-'fsr':'Final state radiation scale',
-'isr':'Initial state radiation scale',
-'JER':'Jet energy resolution',
-'JES':'Jet energy corrections',
-'bdec':'b decay',
-'flatsys':'flat systematics',
-'tt_norm':'t#bar{t} normalization',
-'st_norm':'Single top normalization',
-'vj_norm':'Drell#kern[0.1]{#font[122]{-}}Yan normalization',
-'pdf_as':'NNPDF #alpha_{s} variation',
-'btag':'b tagging efficiency',
-'ltag':'b tagging miss-ID efficiency',
-'EWunc':'Electroweak correction uncertainty',
-}
-
+translate = {'fs':'FS','bfrag':'b-frag','tune':'MC tune','rs':'RS',
+		'pu':'PileUp','murec':'mu reco eff','mutrg':'mu trig eff','elrec':'el reco eff',
+		'eltrg':'el trig eff','mtop':'top mass','hd':'MC hdamp','fsr':'FSR',
+		'isr':'ISR','bdec':'b-decay','flatsys':'flat systematics','ttnorm':'flat'}
 if args.translate is not None:
     with open(args.translate) as jsonfile:
         translate = json.load(jsonfile)
@@ -107,14 +62,6 @@ if args.translate is not None:
 data = {}
 with open(args.input) as jsonfile:
     data = json.load(jsonfile)
-
-adidata = {}
-asidataname = 'impactsB.json'
-with open(asidataname) as asifile:
-    asidata = json.load(asifile)
-
-print asidata
-
 #print data
 # Set the global plotting style
 plot.ModTDRStyle(l=0.4, b=0.10, width=(900 if args.checkboxes else 700))
@@ -137,17 +84,9 @@ POI_fit = POI_info['fit']
 print data['params'][0]['name']
 
 for i in range(len(data['params'])):
-    if data['params'][i]['name']=='r' or data['params'][i]['name']=='pdf_as_17':
+    if data['params'][i]['name']=='r':
 	data['params'].pop(i)
 	break
-
-
-for i in range(len(data['params'])):
-    if data['params'][i]['name']=='pdf_as_18':
-	data['params'][i]['name']='pdf_as_corr'
-for i in range(len(asidata['params'])):
-    if asidata['params'][i]['name']=='pdf_as_18':
-	asidata['params'][i]['name']='pdf_as_corr'
 
 data['params'].sort(key=lambda x: abs(x['impact_%s' % POI]), reverse=True)
 
@@ -188,10 +127,7 @@ for page in xrange(n):
     canv = ROOT.TCanvas(args.output, args.output)
     n_params = len(data['params'][show * page:show * (page + 1)])
     pdata = data['params'][show * page:show * (page + 1)]
-    asipdata = asidata["params"]
     print '>> HELLO Doing page %i, have %i parameters' % (page, n_params)
-	
-    ROOT.gStyle.SetPadBottomMargin(0.12)
 
     boxes = []
     for i in xrange(n_params):
@@ -201,7 +137,7 @@ for page in xrange(n):
         y1 = y1 + float(i) * h
         y2 = y1 + h
         box = ROOT.TPaveText(0, y1, 1, y2, 'NDC')
-	plot.Set(box, TextSize=0.02, BorderSize=0, FillColor=0, TextAlign=12, Margin=0.005)
+	plot.Set(box, TextSize=0.002, BorderSize=0, FillColor=0, TextAlign=12, Margin=0.005)
         if i % 2 == 0:
             box.SetFillColor(18)
         box.AddText('%i' % (n_params - i + page * show))
@@ -223,8 +159,6 @@ for page in xrange(n):
     g_pulls = ROOT.TGraphAsymmErrors(n_params)
     g_impacts_hi = ROOT.TGraphAsymmErrors(n_params)
     g_impacts_lo = ROOT.TGraphAsymmErrors(n_params)
-    g_impactsA_hi = ROOT.TGraphAsymmErrors(n_params)
-    g_impactsA_lo = ROOT.TGraphAsymmErrors(n_params)
     g_check = ROOT.TGraphAsymmErrors()
     g_check_i = 0
 
@@ -273,8 +207,6 @@ for page in xrange(n):
             redo_boxes.append(i)
         g_impacts_hi.SetPoint(i, 0, float(i) + 0.5)
         g_impacts_lo.SetPoint(i, 0, float(i) + 0.5)
-        g_impactsA_hi.SetPoint(i, 0, float(i) + 0.5)
-        g_impactsA_lo.SetPoint(i, 0, float(i) + 0.5)
         if args.checkboxes:
             pboxes = pdata[p]['checkboxes']
             for pbox in pboxes:
@@ -284,38 +216,19 @@ for page in xrange(n):
         imp = pdata[p][POI]
         g_impacts_hi.SetPointError(i, 0, imp[2] - imp[1], 0.5, 0.5)
         g_impacts_lo.SetPointError(i, imp[1] - imp[0], 0, 0.5, 0.5)
-        max_impact = max(max_impact, abs(imp[1] - imp[0]), abs(imp[2] - imp[1]))
+        max_impact = max(
+            max_impact, abs(imp[1] - imp[0]), abs(imp[2] - imp[1]))
         col = colors.get(tp, 2)
         if args.color_groups is not None and len(pdata[p]['groups']) == 1:
             col = color_groups.get(pdata[p]['groups'][0], 1)
 	thisname = pdata[p]['name']
-	asipnum = -1
-	asipnumfound =False
-	while not asipnumfound:
-		asipnum +=1
-		if asipnum >= len(asipdata)-1:
-			print "oh shit", thisname,asipnum
-			break
-       		if asipdata[asipnum]["name"]==thisname:
- 			asipnumfound = True
-			print "found it", asipnum		
-        impA = asipdata[asipnum][POI]
-        max_impact = max(max_impact, abs(impA[1] - impA[0]), abs(impA[2] - impA[1]))
-	if impA[2]-impA[1]>0:
-        	g_impactsA_hi.SetPointError(i, 0, impA[2] - impA[1], 0.0, 0.0)
-        	g_impactsA_lo.SetPointError(i, impA[1] - impA[0], 0, 0.0, 0.0)
-	else:
-        	g_impactsA_hi.SetPointError(i,  impA[1] - impA[2],0, 0.0, 0.0)
-        	g_impactsA_lo.SetPointError(i, 0, impA[0] - impA[1],  0.0, 0.0)
-
-	thisname = Translate(thisname,translate)
-	thisname = thisname.replace('_16',' (2016)')
-	thisname = thisname.replace('_17',' (2017)')
-	thisname = thisname.replace('_18',' (2018)')
+	thisname = thisname.replace('_16','_{16}')
+	thisname = thisname.replace('_17','_{17}')
+	thisname = thisname.replace('_18','_{18}')
 	thisname = thisname.replace('flatsys','flat')
-	thisname = thisname.replace('_corr',' (correlated)')
+	thisname = thisname.replace('_corr','_{corr}')
        	h_pulls.GetYaxis().SetBinLabel(
-            i + 1, ('#color[%i]{%s}'% (col, thisname)))
+            i + 1, ('#color[%i]{%s}'% (col, Translate(thisname, translate))))
        #	h_pulls.GetYaxis().SetLabelSize(0.5)
     # Style and draw the pulls histo
     if externalPullDef:
@@ -339,7 +252,7 @@ for page in xrange(n):
     latex = ROOT.TLatex()
     latex.SetNDC()
     latex.SetTextFont(42)
-    latex.SetTextSize(0.2)
+    latex.SetTextSize(0.02)
     latex.SetTextAlign(22)
     for entry in text_entries:
         latex.DrawLatex(*entry)
@@ -349,25 +262,11 @@ for page in xrange(n):
     if max_impact == 0.: max_impact = 1E-6  # otherwise the plotting gets screwed up
     if max_impact > .9: max_impact = .5
     h_impacts = ROOT.TH2F(
-        "impacts", "impacts", 6, -max_impact * 1.06, max_impact * 1.06, n_params, 0, n_params)
+        "impacts", "impacts", 6, -max_impact * 1.1, max_impact * 1.1, n_params, 0, n_params)
     plot.Set(h_impacts.GetXaxis(), LabelSize=0.03, TitleSize=0.04, Ndivisions=505, Title=
-        '#lower[0.2]{#Delta}#hat{#lower[0.2]{Y}}_{t}')
-#        '#Delta#hat{%s}' % (Translate(POI, translate)))
+        '#Delta#hat{%s}' % (Translate(POI, translate)))
     plot.Set(h_impacts.GetYaxis(), LabelSize=0, TickLength=0.0)
     h_impacts.Draw()
-    
-    pads[0].cd()
-    xpos = ROOT.gPad.GetLeftMargin()
-    xposR = 1-ROOT.gPad.GetRightMargin()
-    ypos = 1.-ROOT.gPad.GetTopMargin()+0.01
-    lx = ROOT.TLatex(0., 0., 'Z')
-    lx.SetNDC(True)
-    lx.SetTextAlign(13)
-    lx.SetTextFont(42)
-    lx.SetTextSize(0.04)
-    lx.SetTextColor(16)
-    lx.DrawLatex(0.014, .99, 'arXiv:2009.07123')
-
 
     if args.checkboxes:
         pads[2].cd()
@@ -405,42 +304,16 @@ for page in xrange(n):
     if 'method' in data and data['method'] in lo_color:
         method = data['method']
     g_impacts_hi.SetFillColor(plot.CreateTransparentColor(hi_color[method], alpha))
-    g_impacts_hi.SetLineWidth(0)
-    g_impacts_lo.SetLineWidth(0)
     g_impacts_hi.Draw('2SAME')
     g_impacts_lo.SetFillColor(plot.CreateTransparentColor(lo_color[method], alpha))
     g_impacts_lo.Draw('2SAME')
-    g_impactsA_hi.SetFillColor(ROOT.kBlack)
-    g_impactsA_hi.SetLineWidth(2)
-    g_impactsA_hi.SetLineStyle(1)
-    g_impactsA_hi.SetMarkerSize(0)
-    #g_impactsA_hi.SetLineColor(plot.CreateTransparentColor(hi_color[method], 1))
-    g_impactsA_hi.SetLineColor(ROOT.kRed+1)
-    g_impactsA_hi.SetFillStyle(3004)
-    
-    g_impactsA_hi.Draw('E SAME')
-    g_impactsA_lo.SetFillColor(ROOT.kBlack)
-    g_impactsA_lo.SetLineColor(ROOT.kAzure+4)
-    g_impactsA_lo.SetLineStyle(1)
-    g_impactsA_lo.SetLineWidth(2)
-    g_impactsA_lo.SetMarkerSize(0)
-    g_impactsA_lo.SetFillStyle(3004)
-    g_impactsA_lo.Draw('E SAME')
-    pads[1].RedrawAxis()
     pads[1].RedrawAxis()
 
-    pullLegend = ROOT.TLegend(0.002, 0.045, 0.102, 0.085, '', 'NBNDC')
-    legend =     ROOT.TLegend(0.08, 0.005, 0.5, 0.085, '', 'NBNDC')
-    legend.SetFillStyle(0)
-    
-    legend.SetNColumns(2)
-    pullLegend.AddEntry(g_pulls, 'Pull', 'LP')
-    pullLegend.SetMargin(0.4)
+    legend = ROOT.TLegend(0.02, 0.02, 0.40, 0.06, '', 'NBNDC')
+    legend.SetNColumns(3)
+    legend.AddEntry(g_pulls, 'Pull', 'LP')
     legend.AddEntry(g_impacts_hi, '+1#sigma Impact', 'F')
     legend.AddEntry(g_impacts_lo, '-1#sigma Impact', 'F')
-    legend.AddEntry(g_impactsA_hi, '+1#sigma Impact', 'l')
-    legend.AddEntry(g_impactsA_lo, '-1#sigma Impact (expected)', 'l')
-    pullLegend.Draw()
     legend.Draw()
 
     leg_width = pads[0].GetLeftMargin() - 0.01
@@ -462,8 +335,7 @@ for page in xrange(n):
     s_nom, s_hi, s_lo = GetRounded(POI_fit[1], POI_fit[2] - POI_fit[1], POI_fit[1] - POI_fit[0])
     if not args.blind:
         plot.DrawTitle(pads[1], '#hat{%s} = %s^{#plus%s}_{#minus%s}%s' % (
-            '#lower[0.2]{Y}_{#lower[-0.1]{t}}', s_nom, s_hi, s_lo,
-            #Translate(POI, translate), s_nom, s_hi, s_lo,
+            Translate(POI, translate), s_nom, s_hi, s_lo,
             '' if args.units is None else ' '+args.units), 3, 0.27)
     extra = ''
     if page == 0:
