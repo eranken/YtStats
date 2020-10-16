@@ -293,7 +293,7 @@ for page in xrange(n):
 
 			g_pullsA.SetPoint(i, pull, float(i) + 0.5)
 			g_pullsA.SetPointError(
-				i, pull_lo, pull_hi, 0., 0.)
+				i, pull_lo, pull_hi, 0.5, 0.5)
 		else:
 			# Hide this point
 			g_pulls.SetPoint(i, 0., 9999.)
