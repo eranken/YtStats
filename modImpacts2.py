@@ -472,7 +472,7 @@ for page in xrange(n):
 	g_impacts_lo.SetLineColor(ROOT.kAzure+4)
 	# g_impacts_lo.SetLineColor(lo_color[method])
 	g_impactsA_lo.SetLineStyle(1)
-	g_impactsA_lo.SetLineWidth(1)
+	g_impactsA_lo.SetLineWidth(0)
 	g_impacts_lo.SetMarkerSize(0)
 	g_impacts_hi.SetMarkerSize(0)
 	# g_impactsA_lo.SetFillStyle(1)
