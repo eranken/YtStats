@@ -109,7 +109,7 @@ with open(args.input) as jsonfile:
 	data = json.load(jsonfile)
 
 adidata = {}
-asidataname = 'impactsB.json'
+asidataname = 'impactsA.json'
 with open(asidataname) as asifile:
 	asidata = json.load(asifile)
 
