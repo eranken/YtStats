@@ -235,17 +235,17 @@ for page in xrange(n):
 	redo_boxes = []
 	for p in xrange(n_params):
 		i = n_params - (p + 1)
-			thisname = pdata[p]['name']
-			asipnum = -1
-			asipnumfound =False
-			while not asipnumfound:
-				asipnum +=1
-				if asipnum >= len(asipdata)-1:
-					print "oh shit", thisname,asipnum
-					break
-		       	if asipdata[asipnum]["name"]==thisname:
-		 			asipnumfound = True
-					print "found it", asipnum
+		thisname = pdata[p]['name']
+		asipnum = -1
+		asipnumfound =False
+		while not asipnumfound:
+			asipnum +=1
+			if asipnum >= len(asipdata)-1:
+				print "oh shit", thisname,asipnum
+				break
+	       	if asipdata[asipnum]["name"]==thisname:
+	 			asipnumfound = True
+				print "found it", asipnum
 		pre = pdata[p]['prefit']
 		fit = pdata[p]['fit']
 		preA = asipdata[asipnum]['prefit']
