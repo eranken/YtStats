@@ -430,7 +430,7 @@ for page in xrange(n):
 	# g_pullsA.SetFillColor(ROOT.kRed)
 	# g_pullsA.SetFillStyle(1)
 	g_pullsA.SetLineWidth(0)
-	g_pullsA.SetFillColor(plot.CreateTransparentColor(hi_color[method], alpha))
+	g_pullsA.SetFillColor(plot.CreateTransparentColor(14, alpha))
 	g_pullsA.Draw('2SAME')
 
 	# And back to the second pad to draw the impacts graphs
