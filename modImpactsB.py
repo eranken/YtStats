@@ -138,16 +138,16 @@ print data['params'][0]['name']
 
 for i in range(len(data['params'])):
 	if data['params'][i]['name']=='r' or data['params'][i]['name']=='pdf_as_17':
-	data['params'].pop(i)
+		data['params'].pop(i)
 	break
 
 
 for i in range(len(data['params'])):
 	if data['params'][i]['name']=='pdf_as_18':
-	data['params'][i]['name']='pdf_as_corr'
+		data['params'][i]['name']='pdf_as_corr'
 for i in range(len(asidata['params'])):
 	if asidata['params'][i]['name']=='pdf_as_18':
-	asidata['params'][i]['name']='pdf_as_corr'
+		asidata['params'][i]['name']='pdf_as_corr'
 
 data['params'].sort(key=lambda x: abs(x['impact_%s' % POI]), reverse=True)
 
@@ -201,39 +201,40 @@ for page in xrange(n):
 		y1 = y1 + float(i) * h
 		y2 = y1 + h
 		box = ROOT.TPaveText(0, y1, 1, y2, 'NDC')
-	plot.Set(box, TextSize=0.02, BorderSize=0, FillColor=0, TextAlign=12, Margin=0.005)
-        if i % 2 == 0:
-            box.SetFillColor(18)
-        box.AddText('%i' % (n_params - i + page * show))
-        box.Draw()
-        boxes.append(box)
+		plot.Set(box, TextSize=0.02, BorderSize=0, FillColor=0, TextAlign=12, Margin=0.005)
+		if i % 2 == 0:
+			box.SetFillColor(18)
+		box.AddText('%i' % (n_params - i + page * show))
+		box.Draw()
+		boxes.append(box)
 
-    # Crate and style the pads
-    if args.checkboxes:
-        pads = plot.MultiRatioSplitColumns([0.54, 0.24], [0., 0.], [0., 0.])
-        pads[2].SetGrid(1, 0)
-    else:
-        pads = plot.MultiRatioSplitColumns([0.7], [0.], [0.])
-    pads[0].SetGrid(1, 0)
-    pads[0].SetTickx(1)
-    pads[1].SetGrid(1, 0)
-    pads[1].SetTickx(1)
+	# Crate and style the pads
+	if args.checkboxes:
+		pads = plot.MultiRatioSplitColumns([0.54, 0.24], [0., 0.], [0., 0.])
+		pads[2].SetGrid(1, 0)
+	else:
+		pads = plot.MultiRatioSplitColumns([0.7], [0.], [0.])
+	pads[0].SetGrid(1, 0)
+	pads[0].SetTickx(1)
+	pads[1].SetGrid(1, 0)
+	pads[1].SetTickx(1)
 
-    h_pulls = ROOT.TH2F("pulls", "pulls", 6, -2.9, 2.9, n_params, 0, n_params)
-    g_pulls = ROOT.TGraphAsymmErrors(n_params)
-    g_impacts_hi = ROOT.TGraphAsymmErrors(n_params)
-    g_impacts_lo = ROOT.TGraphAsymmErrors(n_params)
-    g_impactsA_hi = ROOT.TGraphAsymmErrors(n_params)
-    g_impactsA_lo = ROOT.TGraphAsymmErrors(n_params)
-    g_check = ROOT.TGraphAsymmErrors()
-    g_check_i = 0
+	h_pulls = ROOT.TH2F("pulls", "pulls", 6, -2.9, 2.9, n_params, 0, n_params)
+	g_pulls = ROOT.TGraphAsymmErrors(n_params)
+	g_pullsA = ROOT.TGraphAsymmErrors(n_params)
+	g_impacts_hi = ROOT.TGraphAsymmErrors(n_params)
+	g_impacts_lo = ROOT.TGraphAsymmErrors(n_params)
+	g_impactsA_hi = ROOT.TGraphAsymmErrors(n_params)
+	g_impactsA_lo = ROOT.TGraphAsymmErrors(n_params)
+	g_check = ROOT.TGraphAsymmErrors()
+	g_check_i = 0
 
-    max_impact = 0.
+	max_impact = 0.
 
-    text_entries = []
-    redo_boxes = []
-    for p in xrange(n_params):
-        i = n_params - (p + 1)
+	text_entries = []
+	redo_boxes = []
+	for p in xrange(n_params):
+		i = n_params - (p + 1)
 	thisname = pdata[p]['name']
 	asipnum = -1
 	asipnumfound =False
@@ -242,66 +243,88 @@ for page in xrange(n):
 		if asipnum >= len(asipdata)-1:
 			print "oh shit", thisname,asipnum
 			break
-       		if asipdata[asipnum]["name"]==thisname:
- 			asipnumfound = True
+			if asipdata[asipnum]["name"]==thisname:
+			 	asipnumfound = True
 			print "found it", asipnum
 	pre = pdata[p]['prefit']
-        fit = pdata[p]['fit']
-        tp = pdata[p]['type']
+	fit = pdata[p]['fit']
+	preA = asipdata[asipnum]['prefit']
+	fitA = asipdata[asipnum]['fit']
+	tp = pdata[p]['type']
 	seen_types.add(tp)
-        if pdata[p]['type'] != 'Unconstrained':
-            pre_err_hi = (pre[2] - pre[1])
-            pre_err_lo = (pre[1] - pre[0])
+	if pdata[p]['type'] != 'Unconstrained':
+		pre_err_hi = (pre[2] - pre[1])
+		pre_err_lo = (pre[1] - pre[0])
 
-            if externalPullDef:
-                fit_err_hi = (fit[2] - fit[1])
-                fit_err_lo = (fit[1] - fit[0])
-                pull, pull_hi, pull_lo = CP.returnPullAsym(args.pullDef,fit[1],pre[1],fit_err_hi,pre_err_hi,fit_err_lo,pre_err_lo)
-            else:
-                pull = fit[1] - pre[1]
-                pull = (pull/pre_err_hi) if pull >= 0 else (pull/pre_err_lo)
-                pull_hi = fit[2] - pre[1]
-                pull_hi = (pull_hi/pre_err_hi) if pull_hi >= 0 else (pull_hi/pre_err_lo)
-                pull_hi = pull_hi - pull
-                pull_lo = fit[0] - pre[1]
-                pull_lo = (pull_lo/pre_err_hi) if pull_lo >= 0 else (pull_lo/pre_err_lo)
-                pull_lo =  pull - pull_lo
+		if externalPullDef:
+			fit_err_hi = (fit[2] - fit[1])
+			fit_err_lo = (fit[1] - fit[0])
+			pull, pull_hi, pull_lo = CP.returnPullAsym(args.pullDef,fit[1],pre[1],fit_err_hi,pre_err_hi,fit_err_lo,pre_err_lo)
+		else:
+			pull = fit[1] - pre[1]
+			pull = (pull/pre_err_hi) if pull >= 0 else (pull/pre_err_lo)
+			pull_hi = fit[2] - pre[1]
+			pull_hi = (pull_hi/pre_err_hi) if pull_hi >= 0 else (pull_hi/pre_err_lo)
+			pull_hi = pull_hi - pull
+			pull_lo = fit[0] - pre[1]
+			pull_lo = (pull_lo/pre_err_hi) if pull_lo >= 0 else (pull_lo/pre_err_lo)
+			pull_lo =  pull - pull_lo
 
-            g_pulls.SetPoint(i, pull, float(i) + 0.5)
-            g_pulls.SetPointError(
-                i, pull_lo, pull_hi, 0., 0.)
-        else:
-            # Hide this point
-            g_pulls.SetPoint(i, 0., 9999.)
-            y1 = ROOT.gStyle.GetPadBottomMargin()
-            y2 = 1. - ROOT.gStyle.GetPadTopMargin()
-            x1 = ROOT.gStyle.GetPadLeftMargin()
-            h = (y2 - y1) / float(n_params)
-            y1 = y1 + ((float(i)+0.5) * h)
-            x1 = x1 + (1 - pads[0].GetRightMargin() -x1)/2.
-            s_nom, s_hi, s_lo = GetRounded(fit[1], fit[2] - fit[1], fit[1] - fit[0])
-            text_entries.append((x1, y1, '%s^{#plus%s}_{#minus%s}' % (s_nom, s_hi, s_lo)))
-            redo_boxes.append(i)
-        g_impacts_hi.SetPoint(i, 0, float(i) + 0.5)
-        g_impacts_lo.SetPoint(i, 0, float(i) + 0.5)
-        g_impactsA_hi.SetPoint(i, 0, float(i) + 0.5)
-        g_impactsA_lo.SetPoint(i, 0, float(i) + 0.5)
-        if args.checkboxes:
-            pboxes = pdata[p]['checkboxes']
-            for pbox in pboxes:
-                cboxes.index(pbox)
-                g_check.SetPoint(g_check_i, cboxes.index(pbox) + 0.5, float(i) + 0.5)
-                g_check_i += 1
-        imp = pdata[p][POI]
-        g_impacts_hi.SetPointError(i, 0, imp[2] - imp[1], 0.5, 0.5)
-        g_impacts_lo.SetPointError(i, imp[1] - imp[0], 0, 0.5, 0.5)
-        max_impact = max(max_impact, abs(imp[1] - imp[0]), abs(imp[2] - imp[1]))
-        col = colors.get(tp, 2)
-        if args.color_groups is not None and len(pdata[p]['groups']) == 1:
-            col = color_groups.get(pdata[p]['groups'][0], 1)
-	thisname = pdata[p]['name']
-        impA = asipdata[asipnum][POI]
-        max_impact = max(max_impact, abs(impA[1] - impA[0]), abs(impA[2] - impA[1]))
+		g_pulls.SetPoint(i, pull, float(i) + 0.5)
+		g_pulls.SetPointError(
+			i, pull_lo, pull_hi, 0., 0.)
+		pre_err_hi = (preA[2] - preA[1])
+		pre_err_lo = (preA[1] - preA[0])
+
+		if externalPullDef:
+			fit_err_hi = (fitA[2] - fitA[1])
+			fit_err_lo = (fitA[1] - fitA[0])
+			pull, pull_hi, pull_lo = CP.returnPullAsym(args.pullDef,fitA[1],preA[1],fit_err_hi,pre_err_hi,fit_err_lo,pre_err_lo)
+		else:
+			pull = fitA[1] - preA[1]
+			pull = (pull/pre_err_hi) if pull >= 0 else (pull/pre_err_lo)
+			pull_hi = fitA[2] - preA[1]
+			pull_hi = (pull_hi/pre_err_hi) if pull_hi >= 0 else (pull_hi/pre_err_lo)
+			pull_hi = pull_hi - pull
+			pull_lo = fitA[0] - preA[1]
+			pull_lo = (pull_lo/pre_err_hi) if pull_lo >= 0 else (pull_lo/pre_err_lo)
+			pull_lo =  pull - pull_lo
+
+		g_pullsA.SetPoint(i, pull, float(i) + 0.5)
+		g_pullsA.SetPointError(
+				i, pull_lo, pull_hi, 0., 0.)
+
+	else:
+		# Hide this point
+		g_pulls.SetPoint(i, 0., 9999.)
+		y1 = ROOT.gStyle.GetPadBottomMargin()
+		y2 = 1. - ROOT.gStyle.GetPadTopMargin()
+		x1 = ROOT.gStyle.GetPadLeftMargin()
+		h = (y2 - y1) / float(n_params)
+		y1 = y1 + ((float(i)+0.5) * h)
+		x1 = x1 + (1 - pads[0].GetRightMargin() -x1)/2.
+		s_nom, s_hi, s_lo = GetRounded(fit[1], fit[2] - fit[1], fit[1] - fit[0])
+		text_entries.append((x1, y1, '%s^{#plus%s}_{#minus%s}' % (s_nom, s_hi, s_lo)))
+		redo_boxes.append(i)
+	g_impacts_hi.SetPoint(i, 0, float(i) + 0.5)
+	g_impacts_lo.SetPoint(i, 0, float(i) + 0.5)
+	g_impactsA_hi.SetPoint(i, 0, float(i) + 0.5)
+	g_impactsA_lo.SetPoint(i, 0, float(i) + 0.5)
+	if args.checkboxes:
+		pboxes = pdata[p]['checkboxes']
+		for pbox in pboxes:
+			cboxes.index(pbox)
+			g_check.SetPoint(g_check_i, cboxes.index(pbox) + 0.5, float(i) + 0.5)
+			g_check_i += 1
+	imp = pdata[p][POI]
+	g_impacts_hi.SetPointError(i, 0, imp[2] - imp[1], 0.5, 0.5)
+	g_impacts_lo.SetPointError(i, imp[1] - imp[0], 0, 0.5, 0.5)
+	max_impact = max(max_impact, abs(imp[1] - imp[0]), abs(imp[2] - imp[1]))
+	col = colors.get(tp, 2)
+	if args.color_groups is not None and len(pdata[p]['groups']) == 1:
+		col = color_groups.get(pdata[p]['groups'][0], 1)
+	impA = asipdata[asipnum][POI]
+	max_impact = max(max_impact, abs(impA[1] - impA[0]), abs(impA[2] - impA[1]))
 	if impA[2]-impA[1]>0:
 			g_impactsA_hi.SetPointError(i, 0, impA[2] - impA[1], 0.0, 0.0)
 			g_impactsA_lo.SetPointError(i, impA[1] - impA[0], 0, 0.0, 0.0)
@@ -315,7 +338,7 @@ for page in xrange(n):
 	thisname = thisname.replace('_18',' (2018)')
 	thisname = thisname.replace('flatsys','flat')
 	thisname = thisname.replace('_corr',' (correlated)')
-		   h_pulls.GetYaxis().SetBinLabel(
+	h_pulls.GetYaxis().SetBinLabel(
 			i + 1, ('#color[%i]{%s}'% (col, thisname)))
 	   #	h_pulls.GetYaxis().SetLabelSize(0.5)
 	# Style and draw the pulls histo
