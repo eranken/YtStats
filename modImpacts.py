@@ -429,7 +429,7 @@ for page in xrange(n):
 	# g_pullsA.SetFillColor(ROOT.kRed)
 	# g_pullsA.SetFillStyle(1)
 	g_pullsA.SetLineWidth(0)
-	g_pullsA.SetFillColor(plot.CreateTransparentColor(14, alpha))
+	g_pullsA.SetFillColor(plot.CreateTransparentColor(15, alpha))
 	g_pullsA.Draw('2SAME')
 	g_pulls.Draw('PSAME')
 
@@ -481,18 +481,19 @@ for page in xrange(n):
 	pads[1].RedrawAxis()
 	pads[1].RedrawAxis()
 
-	pullLegend = ROOT.TLegend(0.002, 0.045, 0.102, 0.085, '', 'NBNDC')
-	legend =     ROOT.TLegend(0.08, 0.005, 0.5, 0.085, '', 'NBNDC')
+	# pullLegend = ROOT.TLegend(0.002, 0.045, 0.102, 0.085, '', 'NBNDC')
+	legend =     ROOT.TLegend(0.002, 0.005, 0.5, 0.085, '', 'NBNDC')
 	legend.SetFillStyle(0)
 
-	legend.SetNColumns(2)
-	pullLegend.AddEntry(g_pulls, 'Pull', 'LP')
+	legend.SetNColumns(3)
+	legend.AddEntry(g_pulls, 'Fit constraint', 'LP')
 	pullLegend.SetMargin(0.4)
 	legend.AddEntry(g_impacts_hi, '+1#sigma Impact', 'F')
 	legend.AddEntry(g_impacts_lo, '-1#sigma Impact', 'F')
-	legend.AddEntry(g_impactsA_hi, '+1#sigma Impact', 'l')
-	legend.AddEntry(g_impactsA_lo, '-1#sigma Impact (expected)', 'l')
-	pullLegend.Draw()
+	legend.AddEntry(g_pullsA, 'Fit constraint', 'LP')
+	legend.AddEntry(g_impactsA_hi, '+1#sigma Impact', 'F')
+	legend.AddEntry(g_impactsA_lo, '-1#sigma Impact (expected)', 'F')
+	# pullLegend.Draw()
 	legend.Draw()
 
 	leg_width = pads[0].GetLeftMargin() - 0.01
