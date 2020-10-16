@@ -462,8 +462,6 @@ for page in xrange(n):
 	g_impacts_hi.SetLineColor(hi_color[method])
 	# g_impactsA_hi.SetFillStyle(1)
 
-
-	g_impactsA_lo.SetFillColor(ROOT.kBlack)
 	# g_impactsA_lo.SetLineColor(ROOT.kAzure+4)
 	g_impacts_lo.SetLineColor(lo_color[method])
 	g_impactsA_lo.SetLineStyle(1)
