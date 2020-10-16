@@ -202,11 +202,11 @@ for page in xrange(n):
 		y2 = y1 + h
 		box = ROOT.TPaveText(0, y1, 1, y2, 'NDC')
 	plot.Set(box, TextSize=0.02, BorderSize=0, FillColor=0, TextAlign=12, Margin=0.005)
-		if i % 2 == 0:
-			box.SetFillColor(18)
-		box.AddText('%i' % (n_params - i + page * show))
-		box.Draw()
-		boxes.append(box)
+	if i % 2 == 0:
+		box.SetFillColor(18)
+	box.AddText('%i' % (n_params - i + page * show))
+	box.Draw()
+	boxes.append(box)
 
 	# Crate and style the pads
 	if args.checkboxes:
