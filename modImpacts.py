@@ -138,16 +138,16 @@ print data['params'][0]['name']
 
 for i in range(len(data['params'])):
 	if data['params'][i]['name']=='r' or data['params'][i]['name']=='pdf_as_17':
-	data['params'].pop(i)
+		data['params'].pop(i)
 	break
 
 
 for i in range(len(data['params'])):
 	if data['params'][i]['name']=='pdf_as_18':
-	data['params'][i]['name']='pdf_as_corr'
+		data['params'][i]['name']='pdf_as_corr'
 for i in range(len(asidata['params'])):
 	if asidata['params'][i]['name']=='pdf_as_18':
-	asidata['params'][i]['name']='pdf_as_corr'
+		asidata['params'][i]['name']='pdf_as_corr'
 
 data['params'].sort(key=lambda x: abs(x['impact_%s' % POI]), reverse=True)
 
