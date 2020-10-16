@@ -335,9 +335,8 @@ for page in xrange(n):
 	thisname = thisname.replace('_18',' (2018)')
 	thisname = thisname.replace('flatsys','flat')
 	thisname = thisname.replace('_corr',' (correlated)')
-		   h_pulls.GetYaxis().SetBinLabel(
-			i + 1, ('#color[%i]{%s}'% (col, thisname)))
-	   #	h_pulls.GetYaxis().SetLabelSize(0.5)
+	h_pulls.GetYaxis().SetBinLabel(i + 1, ('#color[%i]{%s}'% (col, thisname)))
+	# h_pulls.GetYaxis().SetLabelSize(0.5)
 	# Style and draw the pulls histo
 	if externalPullDef:
 		plot.Set(h_pulls.GetXaxis(), TitleSize=0.04, LabelSize=0.03, Title=CP.returnTitle(args.pullDef))
