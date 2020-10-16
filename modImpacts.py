@@ -326,11 +326,11 @@ for page in xrange(n):
 		if args.color_groups is not None and len(pdata[p]['groups']) == 1:
 			col = color_groups.get(pdata[p]['groups'][0], 1)
 		if impA[2]-impA[1]>0:
-			g_impactsA_hi.SetPointError(i, 0, impA[2] - impA[1], 0.49, 0.49)
-			g_impactsA_lo.SetPointError(i, impA[1] - impA[0], 0, 0.49, 0.49)
+			g_impactsA_hi.SetPointError(i, 0, impA[2] - impA[1], 0.48, 0.48)
+			g_impactsA_lo.SetPointError(i, impA[1] - impA[0], 0, 0.48, 0.48)
 		else:
-			g_impactsA_hi.SetPointError(i,  impA[1] - impA[2],0, 0.49, 0.49)
-			g_impactsA_lo.SetPointError(i, 0, impA[0] - impA[1],  0.49, 0.49)
+			g_impactsA_hi.SetPointError(i,  impA[1] - impA[2],0, 0.48, 0.48)
+			g_impactsA_lo.SetPointError(i, 0, impA[0] - impA[1],  0.48, 0.48)
 
 		thisname = Translate(thisname,translate)
 		thisname = thisname.replace('_16',' (2016)')
@@ -459,20 +459,24 @@ for page in xrange(n):
 	g_impactsA_hi.SetLineStyle(1)
 	g_impactsA_hi.SetMarkerSize(0)
 	#g_impactsA_hi.SetLineColor(plot.CreateTransparentColor(hi_color[method], 1))
-	g_impactsA_hi.SetLineColor(ROOT.kRed+1)
+	# g_impactsA_hi.SetLineColor(ROOT.kRed+1)
+	g_impactsA_hi.SetLineColor(hi_color[method])
 	g_impactsA_hi.SetFillStyle(1)
 
-	g_impactsA_hi.Draw('2 SAME')
+
 	g_impactsA_lo.SetFillColor(ROOT.kBlack)
-	g_impactsA_lo.SetLineColor(ROOT.kAzure+4)
+	# g_impactsA_lo.SetLineColor(ROOT.kAzure+4)
+	g_impactsA_lo.SetLineColor(lo_color[method])
 	g_impactsA_lo.SetLineStyle(1)
 	g_impactsA_lo.SetLineWidth(1)
 	g_impactsA_lo.SetMarkerSize(0)
 	g_impactsA_lo.SetFillStyle(1)
-	g_impactsA_lo.Draw('2 SAME')
-
 	g_impacts_hi.Draw('2SAME')
 	g_impacts_lo.Draw('2SAME')
+	g_impactsA_hi.Draw('2 SAME')
+	g_impactsA_lo.Draw('2 SAME')
+
+
 
 	pads[1].RedrawAxis()
 	pads[1].RedrawAxis()
