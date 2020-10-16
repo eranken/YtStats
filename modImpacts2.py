@@ -318,8 +318,14 @@ for page in xrange(n):
 				g_check_i += 1
 		imp = pdata[p][POI]
 		impA = asipdata[asipnum][POI]
-		g_impacts_hi.SetPointError(i, 0, imp[2] - imp[1], 0., 0.)
-		g_impacts_lo.SetPointError(i, imp[1] - imp[0], 0, 0., 0.)
+		if imp[2]-imp[1]>0:
+			g_impacts_hi.SetPointError(i, 0, imp[2] - imp[1], 0.0, 0.0)
+			g_impacts_lo.SetPointError(i, imp[1] - imp[0], 0, 0.0, 0.0)
+		else:
+			g_impacts_hi.SetPointError(i,  imp[1] - imp[2],0, 0.0, 0.0)
+			g_impacts_lo.SetPointError(i, 0, imp[0] - imp[1],  0.0, 0.0)
+		# g_impacts_hi.SetPointError(i, 0, imp[2] - imp[1], 0., 0.)
+		# g_impacts_lo.SetPointError(i, imp[1] - imp[0], 0, 0., 0.)
 		max_impact = max(max_impact, abs(imp[1] - imp[0]), abs(imp[2] - imp[1]))
 		max_impact = max(max_impact, abs(impA[1] - impA[0]), abs(impA[2] - impA[1]))
 		col = colors.get(tp, 2)
@@ -487,8 +493,8 @@ for page in xrange(n):
 	legend.SetNColumns(3)
 	legend.AddEntry(g_pulls, 'Fit constraint', 'LP')
 	# pullLegend.SetMargin(0.4)
-	legend.AddEntry(g_impacts_hi, '+1#sigma Impact', 'e')
-	legend.AddEntry(g_impacts_lo, '-1#sigma Impact (observed)', 'e')
+	legend.AddEntry(g_impacts_hi, '+1#sigma Impact', 'l')
+	legend.AddEntry(g_impacts_lo, '-1#sigma Impact (observed)', 'l')
 	legend.AddEntry(g_pullsA, 'Fit constraint', 'F')
 	legend.AddEntry(g_impactsA_hi, '+1#sigma Impact', 'F')
 	legend.AddEntry(g_impactsA_lo, '-1#sigma Impact (expected)', 'F')
