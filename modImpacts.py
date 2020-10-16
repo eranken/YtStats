@@ -487,7 +487,7 @@ for page in xrange(n):
 
 	legend.SetNColumns(3)
 	legend.AddEntry(g_pulls, 'Fit constraint', 'LP')
-	pullLegend.SetMargin(0.4)
+	# pullLegend.SetMargin(0.4)
 	legend.AddEntry(g_impacts_hi, '+1#sigma Impact', 'F')
 	legend.AddEntry(g_impacts_lo, '-1#sigma Impact', 'F')
 	legend.AddEntry(g_pullsA, 'Fit constraint', 'LP')
