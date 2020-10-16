@@ -321,6 +321,7 @@ for page in xrange(n):
 		g_impacts_hi.SetPointError(i, 0, imp[2] - imp[1], 0.5, 0.5)
 		g_impacts_lo.SetPointError(i, imp[1] - imp[0], 0, 0.5, 0.5)
 		max_impact = max(max_impact, abs(imp[1] - imp[0]), abs(imp[2] - imp[1]))
+		max_impact = max(max_impact, abs(impA[1] - impA[0]), abs(impA[2] - impA[1]))
 		col = colors.get(tp, 2)
 		if args.color_groups is not None and len(pdata[p]['groups']) == 1:
 			col = color_groups.get(pdata[p]['groups'][0], 1)
@@ -407,9 +408,10 @@ for page in xrange(n):
 	# Back to the first pad to draw the pulls graph
 	pads[0].cd()
 	plot.Set(g_pulls, MarkerSize=0.8, LineWidth=2)
+	plot.Set(g_pullsA, MarkerSize=0.8, LineWidth=2)
 	g_pulls.Draw('PSAME')
-	g_pullsA.SetFillColor(plot.CreateTransparentColor(ROOT.kBlack, .3))
-	g_pullsA.Draw('2 SAME')
+	# g_pullsA.SetFillColor(plot.CreateTransparentColor(ROOT.kBlack, .3))
+	g_pullsA.Draw('PSAME')
 
 	# And back to the second pad to draw the impacts graphs
 	pads[1].cd()
