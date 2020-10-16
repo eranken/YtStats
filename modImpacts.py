@@ -316,6 +316,7 @@ for page in xrange(n):
 				g_check.SetPoint(g_check_i, cboxes.index(pbox) + 0.5, float(i) + 0.5)
 				g_check_i += 1
 		imp = pdata[p][POI]
+		impA = asipdata[asipnum][POI]
 		g_impacts_hi.SetPointError(i, 0, imp[2] - imp[1], 0.5, 0.5)
 		g_impacts_lo.SetPointError(i, imp[1] - imp[0], 0, 0.5, 0.5)
 		max_impact = max(max_impact, abs(imp[1] - imp[0]), abs(imp[2] - imp[1]))
