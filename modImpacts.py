@@ -428,7 +428,7 @@ for page in xrange(n):
 	g_pulls.Draw('PSAME')
 	# g_pullsA.SetFillColor(plot.CreateTransparentColor(ROOT.kBlack, .3))
 	# g_pullsA.SetFillColor(ROOT.kRed)
-	g_pullsA.SetFillStyle(1)
+	# g_pullsA.SetFillStyle(1)
 	g_pullsA.SetLineWidth(0)
 	g_pullsA.SetFillColor(plot.CreateTransparentColor(hi_color[method], alpha))
 	g_pullsA.Draw('2SAME')
