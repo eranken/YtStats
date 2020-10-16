@@ -243,8 +243,8 @@ for page in xrange(n):
 		if asipnum >= len(asipdata)-1:
 			print "oh shit", thisname,asipnum
 			break
-			   if asipdata[asipnum]["name"]==thisname:
-			 asipnumfound = True
+		if asipdata[asipnum]["name"]==thisname:
+			asipnumfound = True
 			print "found it", asipnum
 	pre = pdata[p]['prefit']
 	fit = pdata[p]['fit']
