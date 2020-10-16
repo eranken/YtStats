@@ -234,10 +234,21 @@ for page in xrange(n):
     redo_boxes = []
     for p in xrange(n_params):
         i = n_params - (p + 1)
-        pre = pdata[p]['prefit']
+	thisname = pdata[p]['name']
+	asipnum = -1
+	asipnumfound =False
+	while not asipnumfound:
+		asipnum +=1
+		if asipnum >= len(asipdata)-1:
+			print "oh shit", thisname,asipnum
+			break
+       		if asipdata[asipnum]["name"]==thisname:
+ 			asipnumfound = True
+			print "found it", asipnum		
+	pre = pdata[p]['prefit']
         fit = pdata[p]['fit']
         tp = pdata[p]['type']
-        seen_types.add(tp)
+	seen_types.add(tp)
         if pdata[p]['type'] != 'Unconstrained':
             pre_err_hi = (pre[2] - pre[1])
             pre_err_lo = (pre[1] - pre[0])
@@ -289,16 +300,6 @@ for page in xrange(n):
         if args.color_groups is not None and len(pdata[p]['groups']) == 1:
             col = color_groups.get(pdata[p]['groups'][0], 1)
 	thisname = pdata[p]['name']
-	asipnum = -1
-	asipnumfound =False
-	while not asipnumfound:
-		asipnum +=1
-		if asipnum >= len(asipdata)-1:
-			print "oh shit", thisname,asipnum
-			break
-       		if asipdata[asipnum]["name"]==thisname:
- 			asipnumfound = True
-			print "found it", asipnum		
         impA = asipdata[asipnum][POI]
         max_impact = max(max_impact, abs(impA[1] - impA[0]), abs(impA[2] - impA[1]))
 	if impA[2]-impA[1]>0:
